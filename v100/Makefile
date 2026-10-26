@@ -1,4 +1,4 @@
-TEXFILE = vXXX
+TEXFILE = v100
 
 HEADERS = $(CURDIR)/..
 
