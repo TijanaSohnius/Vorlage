@@ -33,15 +33,21 @@ Siehe \autoref{fig:plot} und \autoref{tab:tabelle}!
 \subsection{Volumenbestimmung mit Maßstab}
 \subsubsection*{Messdaten}
 
-\subsubsection*{Rechnung}
-Wir berechnen das gesamte Volumen des Körpers, indem wir den Körper in 2 Teile aufteilen.\\
-Es gilt also: Volumen des Körpers $=$ obere Teil ("Zylinder")$+$ untere Teil ("Quadar")\\
-oberer Teil ("Zylinder"):\\
-gesamter Zylinder: V$=\pi\cdot r^{2} \cdot h = \pi \cdot \left(\frac{C_1}{2} \right)^2 \cdot B_6 = \pi \cdot \left(\frac{34,8\unit{\milli\meter}}{2} \right)^2 \cdot 13,3\unit{\milli\meter} \approx 12650,28 \unit{\cubic\milli\meter} $\\
-$V_{K1} = V_{\text{gesamter Zylinder}} - V_{T_1} - V_{T_2} - V{T_3}$\\
-$V_{T_1}$ (Schlitze):\\
-Schlitz A: $V = b \cdot l \cdot h = D_5 \cdot B_8 \cdot\left(\frac{D_1 - D_2 }{2} \right) = 2,2\unit{\milli\meter} \cdot 8,0\unit{\milli\meter} \cdot\left(\frac{34,8 \unit{\milli\meter}- 14,9 \unit{\milli\meter}}{2} \right) \approx 175,12 \unit{\cubic\milli\meter}$\\ 
-Schlitz B: $V = b \cdot l \cdot h = D_4 \cdot B_8 \cdot\left(\frac{D_1 - D_2 }{2} \right) = 4,7\unit{\milli\meter} \cdot 8,0\unit{\milli\meter} \cdot\left(\frac{34,8 \unit{\milli\meter}- 14,9 \unit{\milli\meter}}{2} \right) \approx 374,12 \unit{\cubic\milli\meter}$\\ 
-Kreis höhe Schlitz: $V_K=\pi\cdot r^{2} \cdot h = \pi \cdot \left(\frac{D_2}{2} \right)^2 \cdot B_8 = \pi \cdot \left(\frac{14,9\unit{\milli\meter}}{2} \right)^2 \cdot 8,0\unit{\milli\meter} \approx 1394,93 \unit{\cubic\milli\meter} $\\
-$V_{T_1}= V_K - 2\cdot V_A -2\cdot V_B = 1394,93 \unit{\cubic\milli\meter} - 2 \cdot  175,12 \unit{\cubic\milli\meter} - 2 \cdot 374,12 \unit{\cubic\milli\meter} = 296,45 \unit{\cubic\milli\meter}$\\
-$V_{T_2}$:\\
+\subsubsection*{Herleitung der Formel}
+
+Zur Bestimmung der Fromel haben wir zuerst den Körper in 2 Teile, einen oberen und einen unteren, aufgeteilt.\\
+Es gilt also: Volumen des Körpers $=$ obere Teil $+$ untere Teil\\
+oberer Teil:\\
+Der obere Teil des Körpers basiert auf der Geometrie eines unvollständigen Zylinders. Wir berechnen also den vollständigen Zylinder und ziehen die Auskerungen ab.\\
+gesamter Zylinder: V$=\pi\cdot r^{2} \cdot h = \pi \cdot \left(\frac{C_1}{2} \right)^2 \cdot B_6 $\\
+Auskerbungen:\\
+Schlitz A: $V = b \cdot l \cdot h = D_5 \cdot B_7 \cdot\left(\frac{D_1 - D_2 }{2} \right)$\\ 
+Schlitz B: $V = b \cdot l \cdot h = D_4 \cdot B_8 \cdot\left(\frac{D_1 - D_2 }{2} \right) $\\ 
+Zylinder oben: $V=\pi\cdot r^{2} \cdot h = \pi \cdot \left(\frac{D_2}{2} \right)^2 \cdot B_1$\\
+Zylinder unten (klein): $V=\pi\cdot r^{2} \cdot h = \pi \cdot \left(\frac{A_7}{2} \right)^2 \cdot (B_6 - B_1)$\\
+untere Teil:\\
+Der untere Teil des Körpers basiert auf der Geometrie eines unvollständigen Quadars. Wir berechnen also den vollständigen Quadar und ziehen die Auskerungen bzw. Löcher ab.\\
+gesamter Quadar: $V = a \cdot b \cdot c = A_1 \cdot A_9 \cdot B_5 $\\ 
+Loch 1:
+$V=\pi\cdot r_1^{2} \cdot h + \pi\cdot r_2^{2} \cdot h = \pi \cdot \left(\frac{D_3}{2} \right)^2 \cdot B_2 + \pi \cdot \left(\frac{A_2}{2} \right)^2 \cdot (B_5 - B_2) $\\
+\subsubsection*{Formel für das Volumen}
