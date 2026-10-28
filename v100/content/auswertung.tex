@@ -1,37 +1,35 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
-\begin{figure}
-  \centering
-  \includegraphics{plot.pdf}
-  \caption{Plot.}
-  \label{fig:plot}
-\end{figure}
+\subsection{Volumenbestimmung mit Maßstab}
+
+\subsubsection*{Messdaten}
 
 \begin{table}
   \centering
-  \caption{Eine Beispieltabelle mit Messdaten.}
-  \label{tab:tabelle}
-  \sisetup{table-format=1.1, per-mode=reciprocal}
+  \caption{Messwerte für die Volumenbestimmung.}
+  \label{tab:messwerte}
+  \sisetup{table-format=2.2, per-mode=reciprocal}
   \begin{tblr}{
-      colspec = {S[table-format=3.0] S[table-format=2.1] S},
+      colspec = {c S[table-format=2.2(1.2)] S[table-format=2.2(1.2)] S[table-format=2.2(1.2)]},
       row{1} = {guard, mode=math},
-      vline{4} = {2}{-}{text=\clap{$\pm$}},
     }
     \toprule
-    U \mathbin{/} \unit{\volt} & I \mathbin{/} \unit{\micro\ampere} & \SetCell[c=2]{c} N \mathbin{/} \unit{\per\second} & \\
+    \text{Index} & A /\unit{\milli\meter} & B /\unit{\milli\meter} & D /\unit{\milli\meter}\\
     \midrule
-    360 & 0.1 & 98.3 & 0.9 \\
-    400 & 0.2 & 99.8 & 1.0 \\
-    420 & 0.2 & 99.1 & 0.9 \\
+    1 & 49.9 (0.05) & 11.75 (0.05)& 34.8(0.05) \\
+    2 & 5.1  (0.05) & 5.4   (0.05)& 14.9(0.05) \\
+    3 & 2.5  (0.05) & 2.15  (0.05)& 9.9 (0.05)\\
+    4 & 7    (0.05) & 4.5   (0.05)& 4.7 (0.05)\\
+    5 & 4.2  (0.05) & 11.9  (0.05)& 2.2 (0.05)\\
+    6 & 3.4  (0.05) & 13.3  (0.05)&    \\
+    7 & 6.5  (0.05) & 9.8   (0.05)&    \\
+    8 & 12.1 (0.05) & 8     (0.05)&    \\
+    9 & 45.1 (0.05) &       &          \\
     \bottomrule
   \end{tblr}
 \end{table}
 
-Siehe \autoref{fig:plot} und \autoref{tab:tabelle}!
-
-\subsection{Volumenbestimmung mit Maßstab}
-\subsubsection*{Messdaten}
 
 \subsubsection*{Herleitung der Formel}
 
@@ -51,3 +49,48 @@ gesamter Quadar: $V = a \cdot b \cdot c = A_1 \cdot A_9 \cdot B_5 $\\
 Loch 1:
 $V=\pi\cdot r_1^{2} \cdot h + \pi\cdot r_2^{2} \cdot h = \pi \cdot \left(\frac{D_3}{2} \right)^2 \cdot B_2 + \pi \cdot \left(\frac{A_2}{2} \right)^2 \cdot (B_5 - B_2) $\\
 \subsubsection*{Formel für das Volumen}
+
+\subsection{Überlaufmethode}
+\subsubsection*{Messdaten}
+
+\begin{table}
+\centering
+\caption{Messdaten Überlaufmethode.}
+\label{tab:Ueberlaufmethode}
+\sisetup{table-format=2.1}
+\begin{tblr}{
+colspec = {c S[table-format=2.1(1.1)] S[table-format=2.1(1.1)]},
+row{1} = {guard, mode=math},
+}
+\toprule
+\text{Messung} & V_\text{H2O} /\unit{\milli\liter} & V_\text{Koerper} /\unit{\centi\meter\cubed}\\
+\midrule
+1 & 34(0.5) & 34(0.5) \\ 
+2 & 34(0.5) & 34(0.5) \\ 
+3 & 36(0.5) & 36(0.5) \\ 
+4 & 37(0.5) & 37(0.5) \\ 
+5 & 36(0.5) & 36(0.5) \\ 
+6 & 35(0.5) & 35(0.5) \\
+\bottomrule
+\end{tblr}
+\end{table}
+
+\subsubsection*{Auswertung}
+
+Mittelwert
+\begin{equation}
+  \overline{V} = \frac{1}{n} \sum_{i=1}^{n} V_i
+\end{equation}
+
+Standardabweichung
+\begin{equation}
+  s_V = \sqrt{{\frac{1}{n-1}}
+  \sum_{i=1}^{n}(V_i-\overline{V}^2)}
+\end{equation}
+Standardabweichung vom Mittelwert
+\begin{equation}
+  \Delta \overline{V}
+  = \frac{s_V}{\sqrt{n}}
+  = \sqrt{{\frac{1}{n(n-1)}}
+  \sum_{i=1}^{n}(V_i-\overline{V}^2)}
+\end{equation}
