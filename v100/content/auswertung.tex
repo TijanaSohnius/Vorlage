@@ -101,6 +101,11 @@ Unter Verwendung des oben genannten Ansatzes ergibt sich die folgende Volumengle
   \end{equation}
 Durch das Einsetzen der in der Tabelle \ref{tab:messwerte} aufgeführten Werte in diese Formel ergibt sich: $ V \approx 36,62 \unit{\cubic\centi\meter} $
 
+\subsubsection*{Fehlerfortpflanzung}
+\begin{equation}
+   \sigma_f = \sqrt{ \sum_{i=1}^N \left(\frac{\partial f}{\partial x_i} \sigma_{x_i} \right)^2}
+\end{equation}
+
 \subsection{Überlaufmethode}
 \subsubsection*{Messdaten}
 
@@ -111,7 +116,7 @@ Durch das Einsetzen der in der Tabelle \ref{tab:messwerte} aufgeführten Werte i
 \sisetup{table-format=2.1}
 \begin{tblr}{
 colspec = {c S[table-format=2.1(1.1)] S[table-format=2.1(1.1)]},
-row{1} = {guard, mode=math},
+row{1} = {guard, mode=math}, 
 }
 \toprule
 \text{Messung} & V_\text{H2O} /\unit{\milli\liter} & V_\text{Koerper} /\unit{\centi\meter\cubed}\\
