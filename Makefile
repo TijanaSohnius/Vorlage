@@ -1,7 +1,7 @@
 all:
-	$(MAKE) -C v101
+	$(MAKE) -C v100
 
 clean:
-	$(MAKE) -C v101 clean
+	$(MAKE) -C v100 clean
 
 .PHONY: all clean
