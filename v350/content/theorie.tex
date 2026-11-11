@@ -10,3 +10,15 @@ Der D-Flip-Flop basiert auf einem RS-Flip-Flop, bei dem der Rücksetzeingang das
 Legt man an den Takt-Eingang eine periodische Rechteckspannung an, halbiert sich die Ausgangsfrequenz, wodurch das Flip-Flop als Frequenzteiler wirkt. Bei n zusammengeschalteten Flip-Flops wird die Frequenz entsprechend durch $2^n$ geteilt.\\
 Verbindet man Flip-Flops als Binärzähler, durchlaufen sie definierte Zahlenwerte. Ein 3-Bit-Zähler zählt beispielsweise von 0 bis 7, während vier Flip-Flops das Zählen bis 15 ermöglichen. Durch zusätzliche Gatter lässt sich ein Zähler beim Erreichen eines bestimmten Wertes auf Null zurücksetzen. Ein Zähler, der von 0 bis 9 zählt und dann neu startet, wird als BCD-Zähler bezeichnet.\\
 Zudem lassen sich Signalfrequenzen messen, indem man die Impulse zählt, die innerhalb einer bestimmten Torzeit ankommen. Für die Erzeugung dieser Torzeit verwendet man häufig einen Quarzoszillator, dessen Frequenz über Teiler herabgeregelt wird.\\
+
+\subsection*{Logische Verknüpfungen}
+Die Verknüpfung der logischen Zustände erfolgt in digitalen Schaltungen durch die logischen Grundoperationen Konjunktion (UND), Disjunktion (ODER) und Negation (NICHT).Durch Kombination der Grundoperationen lassen sich weitere Verknüpfungen wie NAND, NOR und XOR aufbauen, die ebenfalls verwendet werden können. Diese Operationen werden im Praktikum mithilfe entsprechender Bauelemente realisiert. 
+Das Verhalten eines Bauelements kann durch seine Wahrheitstabelle beschrieben werden, die für alle möglichen Kombinationen der Eingangsvariablen den zugehörigen Ausgangswert angibt.
+In der nachfolgenden Grafik sind diese abgebildet.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{LogischeOperatoren.jpg}
+    \caption{Logische Operatoren}
+\end{figure}
+Mit Hilfe von NAND- und NOR-Gattern lassen sich beliebige logische Verknüpfungen darstellen.
+So lässt sich beispielsweise eine UND-Verknüpfung aus zwei hintereinander geschalteten NAND-Gattern aufbauen, wobei das zweite Gatter das Ausgangssignal des ersten negiert. Eine ODER-Verknüpfung entsteht aus zwei parallel geschalteten NAND-Gattern, die jeweils das Eingangssignal negieren und deren Ausgänge in einem dritten NAND-Gatter zusammengeführt werden.
