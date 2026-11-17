@@ -14,6 +14,26 @@ In der nachfolgenden Grafik sind diese abgebildet.\\
 \end{figure}
 Mit Hilfe von NAND- und NOR-Gattern lassen sich beliebige logische Verknüpfungen darstellen.
 So lässt sich beispielsweise eine UND-Verknüpfung aus zwei hintereinander geschalteten NAND-Gattern aufbauen, wobei das zweite Gatter das Ausgangssignal des ersten negiert. Eine ODER-Verknüpfung entsteht aus zwei parallel geschalteten NAND-Gattern, die jeweils das Eingangssignal negieren und deren Ausgänge in einem dritten NAND-Gatter zusammengeführt werden.\\
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{und.png}
+        \caption{UND-Verknüpfung}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{oder.png}
+        \caption{ODER-Verknüpfung}
+    \end{minipage}
+\end{figure}\\
+Für das Praktikum ist außerdem wichtig, zu wissen, wie ein NAND-Gatter mit drei Eingängen aufgebaut wird.\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{Nand.png}
+    \caption{Logische Operatoren}
+\end{figure}
 \subsection*{RS-Flip-Flop}
 Digitale Schaltungen lassen sich in statische und zeitabhängige Schaltungen unterteilen. Bei statischen Schaltungen ist der Zeitpunkt eines Zustands unerheblich. Bei zeitabhängigen Schaltungen hingegen verändert sich der Ausgang in Abhängigkeit von einer Änderung am Eingang. Dabei spielen sowohl der Zeitpunkt als auch die vorherigen Zustände (Vorgeschichte) eine wichtige Rolle.\\
 Ein klassisches Beispiel für eine solche zeitabhängige Schaltung ist der RS-Flip-Flop. Er besteht im Kern aus vier NAND-Gattern und kann zwei stabile Ausgangszustände einnehmen (bistabile Kippstufe). Über die Eingänge S (Set = Setzen) und R (Reset= Rücksetzen bzw. Löschen) wird der Zustand des Flip-Flops gesteuert. An den Ausgängen gelten dabei komplementäre Zustände. Ist beispielsweise der Ausgang $Q=1$ gesetzt, so gilt für den Ausgang  $ \overline{Q} = 0$. Dieser Zustand bleibt so lange stabil gespeichert, bis ein Signal am R-Eingang eine Änderung auslöst.\\
@@ -24,4 +44,5 @@ Der D-Flip-Flop basiert auf einem RS-Flip-Flop, bei dem der Rücksetzeingang das
 \subsection*{Frequenzteilung, Zählerschaltungen und Frequenzmessung}
 Legt man an den Takt-Eingang eine periodische Rechteckspannung an, halbiert sich die Ausgangsfrequenz, wodurch das Flip-Flop als Frequenzteiler wirkt. Bei n zusammengeschalteten Flip-Flops wird die Frequenz entsprechend durch $2^n$ geteilt.\\
 Verbindet man Flip-Flops als Binärzähler, durchlaufen sie definierte Zahlenwerte. Ein 3-Bit-Zähler zählt beispielsweise von 0 bis 7, während vier Flip-Flops das Zählen bis 15 ermöglichen. Durch zusätzliche Gatter lässt sich ein Zähler beim Erreichen eines bestimmten Wertes auf Null zurücksetzen. Ein Zähler, der von 0 bis 9 zählt und dann neu startet, wird als BCD-Zähler bezeichnet.\\
+Zusätzlich kann ein Piezosummer eingesetzt werden, um akustische Signale in einem breiten Frequenzbereich zu erzeugen. Die Resonanzfrequenz des verwendeten Piezos liegt zwischen 4,5 kHz und 5,5 kHz, in diesem Bereich ist seine Lautstärke am größten.\\
 Zudem lassen sich Signalfrequenzen messen, indem man die Impulse zählt, die innerhalb einer bestimmten Torzeit ankommen. Für die Erzeugung dieser Torzeit verwendet man häufig einen Quarzoszillator, dessen Frequenz über Teiler herabgeregelt wird.\\
