@@ -1,0 +1,201 @@
+\section{Auswertung}
+\label{sec:Auswertung}
+
+\subsection{Berchnung durch einseitige Auflage}
+
+\subsection{Berechnung durch zweiseitige Auflage}
+
+\subsection{Berechnung mit Schallgeschwindigkeit}
+Um mit Hilfe der Schallgeschwindigkeit das Elastizitätsmodul der zwei verschiednen Stäbe zu bestimmen müssen wir zunächt die Dichte berechnen.\\
+Die Formel für die Dichte lautet wie folgt: 
+\begin{equation}
+  \rho = \frac{m}{V}
+  \label{eqn:Dichte}
+\end{equation}
+
+\subsubsection{Erster Stab}
+\label{sec:Stab1}
+Für den rechteckigen silbernen Stab haben wir die Länge $l = \qty{60(0.1)}{\centi\meter}$ und das Gewicht $m = \qty{167.5(0.1)}{\gram}$ gemessen.\\
+Aufgrund der Skalierung verwenden wir für das Maßband die Geräteunsicherheit von $1 \unit{\milli\meter}$. Für die Waage war eine Geräteunsicherheit von $d = \qty{0.1}{\gram}$ angegeben.\\
+Für die Katenlänge a haben wir mehrere Messungen durchgeführt und die nachfolgende Tabelle \ref{tab:Kantenlange} erhalten.
+\begin{table}[H]
+\centering
+\caption{Messwerte Kantenlänge}
+\label{tab:Kantenlange}
+\sisetup{table-format=2.1}
+\begin{tblr}{
+colspec = {c S[table-format=2.1(1.2)]},
+row{1} = {guard, mode=math}, 
+}
+\toprule
+\text{Messung} & a /\unit{\milli\meter} \\
+\midrule
+1 & 10.7(0.05) \\ 
+2 & 10.6(0.05) \\ 
+3 & 10.7(0.05) \\ 
+4 & 10.8(0.05) \\ 
+5 & 10.8(0.05) \\ 
+\bottomrule
+\end{tblr}
+\end{table}
+Die Geräteunsicherheit bei der verwendeten Schiebelehre beträgt $0.05 \unit{\milli\meter}$.\\
+% Erwartungswert und standardabweichung vom mittelwert noch berechnen, kombinierter fehler berechnen mit der geräteunsicherheit
+
+\subsubsection{Zweiter Stab}
+Für den kupferfarbenden runden Stab haben wir die Länge $l = \qty{59(0.1)}{\centi\meter}$ , das Gewicht $m = \qty{412(0.1)}{\gram}$ und den Durchmesser als $d = \qty{1(0.05)}{\milli\meter}$ bestimmt. Aufgrund von möglichen Ungenauigkeiten bei der Messung haben wir den Durchmesser fünfmal gemessen.
+Es kam jedoch jedes Mal genau 1cm bei dem Messen mit der Schiebelehre heraus. Da die selben Geräte verwendet wurden sind die Geräteunsicherhieten gleich wie bei dem ersten Stab \ref{sec:Stab1}.
+Da es sich um einen kreisförmigen Querschnitt handelt lässt sich das Volumen mit der folgenden Formel berchnen:
+\begin{equation}
+  V_2 = \pi r^2 \cdot l
+\end{equation}
+Setzten wir die Formel für das Volumen in \ref{eqn:Dichte} ein so erhalten wir
+\begin{equation}
+  \rho = \frac{m}{\pi r^2 \cdot l}
+  \label{eqn:Dichte2}
+\end{equation}
+Mit dieser Formel \ref{eqn:Dichte2} erhalten wir für die Dichte des zweiten Stabes den Werte $ \rho_2 = \frac{1648}{59\pi}\,\si{\gram\per\centi\metre\cubed} \approx \qty{8.9}{\gram\per\centi\metre\cubed} $.
+
+Nun verwenden wir die Gaußsche Fehlerfortpflanzung um die Unsicherheit unserer berechneten Dichte zu bestimmen.
+\begin{equation}
+  \Delta\rho = \sqrt{
+    \left( \frac{\partial \rho}{\partial m} \, \Delta m \right)^2 +
+    \left( \frac{\partial \rho}{\partial r} \, \Delta r \right)^2 +
+    \left( \frac{\partial \rho}{\partial l} \, \Delta l \right)^2
+  }
+  \label{eqn:Gauß2}
+\end{equation}
+Nun bilden wir die partiellen Ableitungen.
+\begin{align}
+  \frac{\partial \rho}{\partial m} &= \frac{1}{\pi r^2 l} \\[1ex]
+  \frac{\partial \rho}{\partial r} &= -\frac{2m}{\pi r^3 l} \\[1ex]
+  \frac{\partial \rho}{\partial l} &= -\frac{m}{\pi r^2 l^2}
+\end{align}
+Zum Schluss werden diese nur noch in \ref{eqn:Gauß2} eingesetzt und wier erhalten die fertige Formel.
+\begin{equation}
+  \Delta\rho = \sqrt{
+    \left( \frac{\Delta m}{\pi r^2 l} \right)^2 +
+    \left( \frac{2m \, \Delta r}{\pi r^3 l} \right)^2 +
+    \left( \frac{m \, \Delta l}{\pi r^2 l^2} \right)^2
+  }
+\end{equation}
+Durch einsetzten unserer Werte erhalten wir $\Delta\rho = \qty{0.89}{\gram\per\centi\metre\cubed}$ für die Dichte letztendlich den Wert $\rho = \qty{8.9(0.89)}{\gram\per\centi\metre\cubed}$.
+Unsere berechnete Dichte lässt darauf schließen, dass der Stab wahrscheinlich aus Kupfer ist, da Kupfer die Dichte $ \rho = \qty{8.96}{\gram\per\centi\metre\cubed}$ besitzt.
+
+\subsubsection{Berechnung Elastizitätsmodul}
+Aus der Theorie wissen wir dass diese Formel gilt: 
+\begin{equation}
+  c = \sqrt{\frac{E}{\rho}}
+\end{equation}
+Durch umstellen erhalten wir: 
+\begin{equation}
+  E = \rho \cdot c^2
+  \label{eqn:Eformel}
+\end{equation}
+
+Um die Schallgeschwindikeit c zu bestimmen wurden pro Stab jeweils 10 Messungen durchgeführt.
+% Tabelle mit den Messwerten 
+\begin{table}[H]
+\centering
+\caption{Gemessene Laufzeiten $t$ für zehnfach reflektierte Schallimpulse (Hin- und Rückweg), $t_1$ ist für Stab 1 und $t_2$ für Stab 2}
+\label{tab:Laufzeiten}
+\sisetup{table-format=4.0(1)}
+\begin{tblr}{
+colspec = {c S[table-format=4.0(1)] S[table-format=4.0(1)]},
+row{1} = {guard, mode=math}, 
+}
+\toprule
+\text{Messung} & t_1 /\unit{\micro\second} & t_2 /\unit{\micro\second} \\
+\midrule
+1  & 2399(1) & 2998(1) \\ 
+2  & 2406(1) & 2695(1) \\ 
+3  & 1996(1) & 2994(1) \\ 
+4  & 2397(1) & 2993(1) \\ 
+5  & 2395(1) & 2694(1) \\ 
+6  & 2397(1) & 2993(1) \\ 
+7  & 2396(1) & 2993(1) \\ 
+8  & 2395(1) & 2992(1) \\ 
+9  & 2396(1) & 2692(1) \\ 
+10 & 2395(1) & 2992(1) \\ 
+\bottomrule
+\end{tblr}
+\end{table}
+
+%Mittelwert von t muss noch jeweils bestimmt werden und die abweichung davon
+Der Mittelwert der $n = 10$ Messungen ergibt sich aus
+\begin{equation}
+  \bar{t} = \frac{1}{n} \sum_{i=1}^{n} t_i .
+\end{equation}
+
+Für Stab 1 folgt
+\begin{align}
+  \bar{t}_1 &= \frac{1}{10} \Big( 2399 + 2406 + 1996 + 2397 + 2395 \nonumber \\
+            &\qquad\quad + 2397 + 2396 + 2395 + 2396 + 2395 \Big) \unit{\micro\second} \nonumber \\
+            &= \frac{23572}{10} \unit{\micro\second} \nonumber \\
+            &= \qty{2357.2}{\micro\second}
+\end{align}
+
+und für Stab 2
+\begin{align}
+  \bar{t}_2 &= \frac{1}{10} \Big( 2998 + 2695 + 2994 + 2993 + 2694 \nonumber \\
+            &\qquad\quad + 2993 + 2993 + 2992 + 2692 + 2992 \Big) \unit{\micro\second} \nonumber \\
+            &= \frac{29036}{10} \unit{\micro\second} \nonumber \\
+            &= \qty{2903.6}{\micro\second}.
+\end{align}
+%Abweichung mittelwert
+Die Standardabweichung der Einzelmessungen und der Standardfehler des Mittelwerts sind
+\begin{align}
+  s &= \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} \left( t_i - \bar{t} \right)^2}, \\
+  \sigma_{\bar{t}} &= \frac{s}{\sqrt{n}}.
+\end{align}
+
+Für Stab 1 folgt mit $\bar{t}_1 = \qty{2357.2}{\micro\second}$
+%\begin{align}
+%  \sum_{i=1}^{10} \left( t_{1,i} - \bar{t}_1 \right)^2
+ %   &= (2399 - 2357{,}2)^2 + (2406 - 2357{,}2)^2 + (1996 - 2357{,}2)^2 \nonumber \\
+%    &\quad + (2397 - 2357{,}2)^2 + (2395 - 2357{,}2)^2 + (2397 - 2357{,}2)^2 \nonumber \\
+ %   &\quad + (2396 - 2357{,}2)^2 + (2395 - 2357{,}2)^2 + (2396 - 2357{,}2)^2 \nonumber \\
+%    &\quad + (2395 - 2357{,}2)^2 \nonumber \\
+%    &= \qty{145059.6}{\micro\second\squared}, \\[1ex]
+%  s_1 &= \sqrt{\frac{\qty{145059.6}{\micro\second\squared}}{9}} \nonumber \\
+%      &= \qty{126.96}{\micro\second}, \\[1ex]
+%  \sigma_{\bar{t}_1} &= \frac{\qty{126.96}{\micro\second}}{\sqrt{10}} \nonumber \\
+ %     &= \qty{40.15}{\micro\second}.
+%\end{align}
+
+%Für Stab 2 folgt mit $\bar{t}_2 = \qty{2903.6}{\micro\second}$
+%\begin{align}
+ % \sum_{i=1}^{10} \left( t_{2,i} - \bar{t}_2 \right)^2
+ %   &= (2998 - 2903{,}6)^2 + (2695 - 2903{,}6)^2 + (2994 - 2903{,}6)^2 \nonumber \\
+%    &\quad + (2993 - 2903{,}6)^2 + (2694 - 2903{,}6)^2 + (2993 - 2903{,}6)^2 \nonumber \\
+%    &\quad + (2993 - 2903{,}6)^2 + (2992 - 2903{,}6)^2 + (2692 - 2903{,}6)^2 \nonumber \\
+ %   &\quad + (2992 - 2903{,}6)^2 \nonumber \\
+%    &= \qty{188910.4}{\micro\second\squared}, \\[1ex]
+%  s_2 &= \sqrt{\frac{\qty{188910.4}{\micro\second\squared}}{9}} \nonumber \\
+%      &= \qty{144.88}{\micro\second}, \\[1ex]
+ % \sigma_{\bar{t}_2} &= \frac{\qty{144.88}{\micro\second}}{\sqrt{10}} \nonumber \\
+%      &= \qty{45.81}{\micro\second}.
+%\end{align}
+
+Damit lauten die Ergebnisse
+\begin{align}
+  t_1 &= \qty{2357(40)}{\micro\second}, \\
+  t_2 &= \qty{2904(46)}{\micro\second}.
+\end{align}
+Die Geräteunsicherheit des Zählers von $\Delta t_\mathrm{Gerät} = \qty{1}{\micro\second}$ ist gegenüber dem Standardfehler des Mittelwerts von etwa $\qty{40}{\micro\second}$ bzw. $\qty{46}{\micro\second}$ vernachlässigbar klein und wird daher nicht berücksichtigt.\\
+%%
+
+Da der Impulszähler die doppelte Laufzeit anzeigt lässt sich die Schallgeschwindikeit c wie folgt berechnen:
+\begin{equation}
+  c = \frac{2l \cdot n}{t}
+\end{equation}
+Dabei ist l die Länge unseres Stabes und n wie viele Impulse reflektiert werden.
+Da bei uns eine Messung 10 Impulsen entspricht ergibt sich die folgende Formel: 
+\begin{equation}
+  c = \frac{20l}{t}
+\end{equation}
+Setzten wir dies in \ref{eqn:Eformel} ein so erhalten wir: 
+\begin{equation}
+  E = \rho \cdot {\frac{2l \cdot n}{t}}^2
+  \label{eqn:Eformel2}
+\end{equation}
+Dies ist unsere fertige Formel zum berechnen des Elastizitätsmodul mit Hilfe der Schallgeschwindigkeit.
