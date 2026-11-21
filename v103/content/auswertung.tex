@@ -13,7 +13,7 @@ Die Formel für die Dichte lautet wie folgt:
   \label{eqn:Dichte}
 \end{equation}
 
-\subsubsection{Erster Stab}
+\subsubsection{ Dichte des ersten Stabes}
 \label{sec:Stab1}
 Für den rechteckigen silbernen Stab haben wir die Länge $l = \qty{60(0.1)}{\centi\meter}$ und das Gewicht $m = \qty{167.5(0.1)}{\gram}$ gemessen.\\
 Aufgrund der Skalierung verwenden wir für das Maßband die Geräteunsicherheit von $1 \unit{\milli\meter}$. Für die Waage war eine Geräteunsicherheit von $d = \qty{0.1}{\gram}$ angegeben.\\
@@ -40,9 +40,81 @@ row{1} = {guard, mode=math},
 \end{table}
 Die Geräteunsicherheit bei der verwendeten Schiebelehre beträgt $0.05 \unit{\milli\meter}$.\\
 % Erwartungswert und standardabweichung vom mittelwert noch berechnen, kombinierter fehler berechnen mit der geräteunsicherheit
+Der Mittelwert der $n = 5$ Messungen der Kantenlänge ergibt sich aus
+\begin{align}
+  \bar{a} &= \frac{1}{n} \sum_{i=1}^{n} a_i \nonumber \\
+          &= \frac{1}{5} \left( 10{,}70 + 10{,}60 + 10{,}70 + 10{,}80 + 10{,}80 \right) \unit{\milli\meter} \nonumber \\
+          &= \frac{53{,}60}{5} \unit{\milli\meter} \nonumber \\
+          &= \qty{10.72}{\milli\meter}.
+\end{align}
 
-\subsubsection{Zweiter Stab}
-Für den kupferfarbenden runden Stab haben wir die Länge $l = \qty{59(0.1)}{\centi\meter}$ , das Gewicht $m = \qty{412(0.1)}{\gram}$ und den Durchmesser als $d = \qty{1(0.05)}{\milli\meter}$ bestimmt. Aufgrund von möglichen Ungenauigkeiten bei der Messung haben wir den Durchmesser fünfmal gemessen.
+Die Standardabweichung der Einzelmessungen und der Standardfehler des Mittelwerts sind
+\begin{align}
+  s_a &= \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} \left( a_i - \bar{a} \right)^2}, \\
+  \sigma_{\bar{a}} &= \frac{s_a}{\sqrt{n}}.
+\end{align}
+
+Eingesetzt folgt
+\begin{align}
+  s_a &= \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} \left( a_i - \bar{a} \right)^2} \nonumber \\
+      &= \sqrt{\frac{1}{4} \Big( 2 \cdot (10{,}70 - 10{,}72)^2 + (10{,}60 - 10{,}72)^2 + 2 \cdot (10{,}80 - 10{,}72)^2 \Big)} \unit{\milli\meter} \nonumber \\
+      &= \qty{0.0837}{\milli\meter}. \\
+  \sigma_{\bar{a}} &= \frac{\qty{0.0837}{\milli\meter}}{\sqrt{5}} \nonumber \\
+      &= \qty{0.0374}{\milli\meter}.
+\end{align}
+
+Die Geräteunsicherheit der Schieblehre beträgt $\Delta a_\text{Gerät} = \qty{0.05}{\milli\meter}$. Sie ist hier mit dem Standardfehler vergleichbar und wird daher quadratisch addiert:
+\begin{align}
+  \Delta a &= \sqrt{\sigma_{\bar{a}}^2 + \Delta a_\text{Gerät}^2} \nonumber \\
+           &= \sqrt{\left( \qty{0.0374}{\milli\meter} \right)^2 + \left( \qty{0.05}{\milli\meter} \right)^2} \nonumber \\
+           &= \qty{0.0624}{\milli\meter}.
+\end{align}
+
+Damit lautet das Endergebnis für die Katenlänge
+\begin{equation}
+  a = \qty{10.72(0.06)}{\milli\meter}.
+\end{equation}
+%%
+\begin{equation}
+  V_2 = a^2 \cdot l
+\end{equation}
+Setzten wir die Formel für das Volumen in \ref{eqn:Dichte} ein so erhalten wir
+\begin{equation}
+  \rho = \frac{m}{a^2 \cdot l}
+  \label{eqn:Dichte1}
+\end{equation}
+Mit dieser Formel \ref{eqn:Dichte1} erhalten wir für die Dichte des ersten Stabes den Wert $ \rho_1 \approx \qty{2.43}{\gram\per\centi\metre\cubed}$.\\
+%%
+Nun verwenden wir die Gaußsche Fehlerfortpflanzung, um die Unsicherheit unserer berechneten Dichte zu bestimmen.
+\begin{equation}
+  \Delta\rho = \sqrt{
+    \left( \frac{\partial \rho}{\partial m} \, \Delta m \right)^2 +
+    \left( \frac{\partial \rho}{\partial a} \, \Delta a \right)^2 +
+    \left( \frac{\partial \rho}{\partial l} \, \Delta l \right)^2
+  }
+  \label{eqn:Gauss1}
+\end{equation}
+Nun bilden wir die partiellen Ableitungen.
+\begin{align}
+  \frac{\partial \rho}{\partial m} &= \frac{1}{a^2 l} \\[1ex]
+  \frac{\partial \rho}{\partial a} &= -\frac{2m}{a^3 l} \\[1ex]
+  \frac{\partial \rho}{\partial l} &= -\frac{m}{a^2 l^2}
+\end{align}
+Diese werden in \eqref{eqn:Gauss1} eingesetzt und wir erhalten die fertige Formel.
+\begin{equation}
+  \Delta\rho = \sqrt{
+    \left( \frac{\Delta m}{a^2 l} \right)^2 +
+    \left( \frac{2m \, \Delta a}{a^3 l} \right)^2 +
+    \left( \frac{m \, \Delta l}{a^2 l^2} \right)^2
+  }
+\end{equation}
+
+Durch einsetzten unserer Werte erhalten wir $\Delta\rho_1 = \qty{0.0286}{\gram\per\centi\metre\cubed}$ und für die Dichte letztendlich den Wert $\rho_1 = \qty{2.43(0.03)}{\gram\per\centi\metre\cubed}$.\\
+Unsere berechnete Dichte lässt darauf schließen, dass der Stab wahrscheinlich aus einer Aluminium-Legierung ist, da Aluminium die Dichte $ \rho = \qty{2.7}{\gram\per\centi\metre\cubed}$ besitzt.
+%%
+
+\subsubsection{Dichte des zweiten Stabes}
+Für den kupferfarbenden runden Stab haben wir die Länge $l = \qty{59(0.1)}{\centi\meter}$ , das Gewicht $m = \qty{412(0.1)}{\gram}$ und den Durchmesser als $d = \qty{10(0.05)}{\milli\meter}$ bestimmt. Aufgrund von möglichen Ungenauigkeiten bei der Messung haben wir den Durchmesser fünfmal gemessen.
 Es kam jedoch jedes Mal genau 1cm bei dem Messen mit der Schiebelehre heraus. Da die selben Geräte verwendet wurden sind die Geräteunsicherhieten gleich wie bei dem ersten Stab \ref{sec:Stab1}.
 Da es sich um einen kreisförmigen Querschnitt handelt lässt sich das Volumen mit der folgenden Formel berchnen:
 \begin{equation}
@@ -53,7 +125,7 @@ Setzten wir die Formel für das Volumen in \ref{eqn:Dichte} ein so erhalten wir
   \rho = \frac{m}{\pi r^2 \cdot l}
   \label{eqn:Dichte2}
 \end{equation}
-Mit dieser Formel \ref{eqn:Dichte2} erhalten wir für die Dichte des zweiten Stabes den Werte $ \rho_2 = \frac{1648}{59\pi}\,\si{\gram\per\centi\metre\cubed} \approx \qty{8.9}{\gram\per\centi\metre\cubed} $.
+Mit dieser Formel \ref{eqn:Dichte2} erhalten wir für die Dichte des zweiten Stabes den Wert $ \rho_2 = \frac{1648}{59\pi}\,\si{\gram\per\centi\metre\cubed} \approx \qty{8.9}{\gram\per\centi\metre\cubed} $.
 
 Nun verwenden wir die Gaußsche Fehlerfortpflanzung um die Unsicherheit unserer berechneten Dichte zu bestimmen.
 \begin{equation}
@@ -78,21 +150,11 @@ Zum Schluss werden diese nur noch in \ref{eqn:Gauß2} eingesetzt und wier erhalt
     \left( \frac{m \, \Delta l}{\pi r^2 l^2} \right)^2
   }
 \end{equation}
-Durch einsetzten unserer Werte erhalten wir $\Delta\rho = \qty{0.89}{\gram\per\centi\metre\cubed}$ für die Dichte letztendlich den Wert $\rho = \qty{8.9(0.89)}{\gram\per\centi\metre\cubed}$.
+Durch einsetzten unserer Werte erhalten wir $\Delta\rho = \qty{0.089}{\gram\per\centi\metre\cubed}$ für die Dichte letztendlich den Wert $\rho = \qty{8.9(0.09)}{\gram\per\centi\metre\cubed}$.
 Unsere berechnete Dichte lässt darauf schließen, dass der Stab wahrscheinlich aus Kupfer ist, da Kupfer die Dichte $ \rho = \qty{8.96}{\gram\per\centi\metre\cubed}$ besitzt.
 
-\subsubsection{Berechnung Elastizitätsmodul}
-Aus der Theorie wissen wir dass diese Formel gilt: 
-\begin{equation}
-  c = \sqrt{\frac{E}{\rho}}
-\end{equation}
-Durch umstellen erhalten wir: 
-\begin{equation}
-  E = \rho \cdot c^2
-  \label{eqn:Eformel}
-\end{equation}
-
-Um die Schallgeschwindikeit c zu bestimmen wurden pro Stab jeweils 10 Messungen durchgeführt.
+\subsubsection{Laufzeitmessung}
+Um die Schallgeschwindikeit c zu bestimmen wurden pro Stab jeweils 10 Messungen durchgeführt \ref{sec:DurchführungSchall}.
 % Tabelle mit den Messwerten 
 \begin{table}[H]
 \centering
@@ -149,39 +211,39 @@ Die Standardabweichung der Einzelmessungen und der Standardfehler des Mittelwert
 \end{align}
 
 Für Stab 1 folgt mit $\bar{t}_1 = \qty{2357.2}{\micro\second}$
-%\begin{align}
-%  \sum_{i=1}^{10} \left( t_{1,i} - \bar{t}_1 \right)^2
- %   &= (2399 - 2357{,}2)^2 + (2406 - 2357{,}2)^2 + (1996 - 2357{,}2)^2 \nonumber \\
-%    &\quad + (2397 - 2357{,}2)^2 + (2395 - 2357{,}2)^2 + (2397 - 2357{,}2)^2 \nonumber \\
- %   &\quad + (2396 - 2357{,}2)^2 + (2395 - 2357{,}2)^2 + (2396 - 2357{,}2)^2 \nonumber \\
-%    &\quad + (2395 - 2357{,}2)^2 \nonumber \\
-%    &= \qty{145059.6}{\micro\second\squared}, \\[1ex]
-%  s_1 &= \sqrt{\frac{\qty{145059.6}{\micro\second\squared}}{9}} \nonumber \\
-%      &= \qty{126.96}{\micro\second}, \\[1ex]
-%  \sigma_{\bar{t}_1} &= \frac{\qty{126.96}{\micro\second}}{\sqrt{10}} \nonumber \\
- %     &= \qty{40.15}{\micro\second}.
-%\end{align}
+\begin{align}
+  \sum_{i=1}^{10} \left( t_{1,i} - \bar{t}_1 \right)^2
+    &= (2399 - 2357{,}2)^2 + (2406 - 2357{,}2)^2 + (1996 - 2357{,}2)^2 \nonumber \\
+    &\quad + (2397 - 2357{,}2)^2 + (2395 - 2357{,}2)^2 + (2397 - 2357{,}2)^2 \nonumber \\
+    &\quad + (2396 - 2357{,}2)^2 + (2395 - 2357{,}2)^2 + (2396 - 2357{,}2)^2 \nonumber \\
+    &\quad + (2395 - 2357{,}2)^2 \nonumber \\
+    &= \qty{145059.6}{\micro\second\squared}, \\[1ex]
+  s_1 &= \sqrt{\frac{\qty{145059.6}{\micro\second\squared}}{9}} \nonumber \\
+      &= \qty{126.96}{\micro\second}, \\[1ex]
+  \sigma_{\bar{t}_1} &= \frac{\qty{126.96}{\micro\second}}{\sqrt{10}} \nonumber \\
+      &= \qty{40.15}{\micro\second}.
+\end{align}
 
-%Für Stab 2 folgt mit $\bar{t}_2 = \qty{2903.6}{\micro\second}$
-%\begin{align}
- % \sum_{i=1}^{10} \left( t_{2,i} - \bar{t}_2 \right)^2
- %   &= (2998 - 2903{,}6)^2 + (2695 - 2903{,}6)^2 + (2994 - 2903{,}6)^2 \nonumber \\
-%    &\quad + (2993 - 2903{,}6)^2 + (2694 - 2903{,}6)^2 + (2993 - 2903{,}6)^2 \nonumber \\
-%    &\quad + (2993 - 2903{,}6)^2 + (2992 - 2903{,}6)^2 + (2692 - 2903{,}6)^2 \nonumber \\
- %   &\quad + (2992 - 2903{,}6)^2 \nonumber \\
-%    &= \qty{188910.4}{\micro\second\squared}, \\[1ex]
-%  s_2 &= \sqrt{\frac{\qty{188910.4}{\micro\second\squared}}{9}} \nonumber \\
-%      &= \qty{144.88}{\micro\second}, \\[1ex]
- % \sigma_{\bar{t}_2} &= \frac{\qty{144.88}{\micro\second}}{\sqrt{10}} \nonumber \\
-%      &= \qty{45.81}{\micro\second}.
-%\end{align}
+Für Stab 2 folgt mit $\bar{t}_2 = \qty{2903.6}{\micro\second}$
+\begin{align}
+  \sum_{i=1}^{10} \left( t_{2,i} - \bar{t}_2 \right)^2
+    &= (2998 - 2903{,}6)^2 + (2695 - 2903{,}6)^2 + (2994 - 2903{,}6)^2 \nonumber \\
+    &\quad + (2993 - 2903{,}6)^2 + (2694 - 2903{,}6)^2 + (2993 - 2903{,}6)^2 \nonumber \\
+    &\quad + (2993 - 2903{,}6)^2 + (2992 - 2903{,}6)^2 + (2692 - 2903{,}6)^2 \nonumber \\
+    &\quad + (2992 - 2903{,}6)^2 \nonumber \\
+    &= \qty{188910.4}{\micro\second\squared}, \\[1ex]
+  s_2 &= \sqrt{\frac{\qty{188910.4}{\micro\second\squared}}{9}} \nonumber \\
+      &= \qty{144.88}{\micro\second}, \\[1ex]
+  \sigma_{\bar{t}_2} &= \frac{\qty{144.88}{\micro\second}}{\sqrt{10}} \nonumber \\
+      &= \qty{45.81}{\micro\second}.
+\end{align}
 
 Damit lauten die Ergebnisse
 \begin{align}
   t_1 &= \qty{2357(40)}{\micro\second}, \\
   t_2 &= \qty{2904(46)}{\micro\second}.
 \end{align}
-Die Geräteunsicherheit des Zählers von $\Delta t_\mathrm{Gerät} = \qty{1}{\micro\second}$ ist gegenüber dem Standardfehler des Mittelwerts von etwa $\qty{40}{\micro\second}$ bzw. $\qty{46}{\micro\second}$ vernachlässigbar klein und wird daher nicht berücksichtigt.\\
+Die Geräteunsicherheit des Zählers von $\Delta t_\text{Gerät} = \qty{1}{\micro\second}$ ist gegenüber dem Standardfehler des Mittelwerts von etwa $\qty{40}{\micro\second}$ bzw. $\qty{46}{\micro\second}$ vernachlässigbar klein und wird daher nicht berücksichtigt.\\
 %%
 
 Da der Impulszähler die doppelte Laufzeit anzeigt lässt sich die Schallgeschwindikeit c wie folgt berechnen:
@@ -192,10 +254,70 @@ Dabei ist l die Länge unseres Stabes und n wie viele Impulse reflektiert werden
 Da bei uns eine Messung 10 Impulsen entspricht ergibt sich die folgende Formel: 
 \begin{equation}
   c = \frac{20l}{t}
+  \label{eqn:Schall}
 \end{equation}
-Setzten wir dies in \ref{eqn:Eformel} ein so erhalten wir: 
+
+\subsubsection{Berechnung Elastizitätsmodul}
+
+Aus der Theorie wissen wir dass diese Formel gilt: 
 \begin{equation}
-  E = \rho \cdot {\frac{2l \cdot n}{t}}^2
+  c = \sqrt{\frac{E}{\rho}}
+\end{equation}
+Durch umstellen erhalten wir: 
+\begin{equation}
+  E = \rho \cdot c^2
+  \label{eqn:Eformel}
+\end{equation}
+
+Setzten wir die Schallgeschwindigkeit \ref{eqn:Schall} in \ref{eqn:Eformel} ein so erhalten wir: 
+\begin{equation}
+  E = \rho \cdot \left( \frac{20 \cdot l}{t} \right)^2
   \label{eqn:Eformel2}
 \end{equation}
 Dies ist unsere fertige Formel zum berechnen des Elastizitätsmodul mit Hilfe der Schallgeschwindigkeit.
+%%
+
+Für Stab 1 mit $\rho_1 = \left( \num{2429} \pm \num{30} \right) \unit{\kilo\gram\per\meter\cubed}$, $l_1 = \left( \num{0.600} \pm \num{0.001} \right) \unit{\meter}$ und $\bar t_1 = \left( \num{2357e-6} \pm \num{40e-6} \right) \unit{\second}$ folgt
+\begin{align}
+  E_1 &= \qty{2429}{\kilo\gram\per\meter\cubed} \cdot \left( \frac{20 \cdot \qty{0.600}{\meter}}{\qty{2357.2e-6}{\second}} \right)^2 \nonumber \\
+      &= \qty{6.296e10}{\pascal} \nonumber \\
+      &= \qty{62.96}{\giga\pascal}.
+\end{align}
+
+Für Stab 2 mit $\rho_2 = \left( \num{8891} \pm \num{90} \right) \unit{\kilo\gram\per\meter\cubed}$, $l_2 = \left( \num{0.590} \pm \num{0.001} \right) \unit{\meter}$ und $\bar t_2 = \left( \num{2904e-6} \pm \num{46e-6} \right) \unit{\second}$ folgt
+\begin{align}
+  E_2 &= \qty{8891}{\kilo\gram\per\meter\cubed} \cdot \left( \frac{20 \cdot \qty{0.590}{\meter}}{\qty{2903.6e-6}{\second}} \right)^2 \nonumber \\
+      &= \qty{1.468e11}{\pascal} \nonumber \\
+      &= \qty{146.8}{\giga\pascal}.
+\end{align}
+
+%Unsicherheiten
+Nun verwenden wir die Gaußsche Fehlerfortpflanzung, um die Unsicherheit des Elastizitätsmoduls zu bestimmen.
+\begin{equation}
+  \Delta E = \sqrt{
+    \left( \frac{\partial E}{\partial \rho} \, \Delta \rho \right)^2 +
+    \left( \frac{\partial E}{\partial l} \, \Delta l \right)^2 +
+    \left( \frac{\partial E}{\partial t} \, \Delta t \right)^2
+  }
+  \label{eqn:GaussE}
+\end{equation}
+Mit $E = 400 \, \rho \, l^2 \, t^{-2}$ bilden wir die partiellen Ableitungen.
+\begin{align}
+  \frac{\partial E}{\partial \rho} &= \frac{400\,l^2}{t^2} = \left( \frac{20\,l}{t} \right)^2 \\[1ex]
+  \frac{\partial E}{\partial l} &= \frac{800\,\rho\,l}{t^2} \\[1ex]
+  \frac{\partial E}{\partial t} &= -\frac{800\,\rho\,l^2}{t^3}
+\end{align}
+Diese werden in \eqref{eqn:GaussE} eingesetzt, und wir erhalten die fertige Formel.
+\begin{equation}
+  \Delta E = \sqrt{
+    \left( \frac{400\,l^2}{t^2} \, \Delta\rho \right)^2 +
+    \left( \frac{800\,\rho\,l}{t^2} \, \Delta l \right)^2 +
+    \left( \frac{800\,\rho\,l^2}{t^3} \, \Delta t \right)^2
+  }
+  \label{eqn:GaussE2}
+\end{equation}
+
+Für Stab 1 mit $\rho_1 = \left( \num{2429} \pm \num{30} \right) \unit{\kilo\gram\per\meter\cubed}$, $l_1 = \left( \num{0.600} \pm \num{0.001} \right) \unit{\meter}$ und $t_1 = \left( \num{2357e-6} \pm \num{40e-6} \right) \unit{\second}$ erhalten wir durch einsetzten der Werte in \ref{eqn:GaussE2}
+$E_1 = \left( \num{63.0} \pm \num{2.3} \right) \unit{\giga\pascal}$.
+
+Für Stab 2 mit $\rho_2 = \left( \num{8891} \pm \num{90} \right) \unit{\kilo\gram\per\meter\cubed}$, $l_2 = \left( \num{0.590} \pm \num{0.001} \right) \unit{\meter}$ und $t_2 = \left( \num{2904e-6} \pm \num{46e-6} \right) \unit{\second}$ erhalten wir $E_2 = \left( \num{146.8} \pm \num{4.9} \right) \unit{\giga\pascal}$.
