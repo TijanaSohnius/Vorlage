@@ -11,12 +11,52 @@ Dies ist eine Gerade der Form $y = m \cdot z$ mit $m = \frac{F}{2EI}$ als Steigu
 Stellen wir die Steigung m um so erhalten wir die Formel für das Elastizitätsmodul.
 \begin{equation}
   E = \frac{F}{2 \cdot I \cdot m}
+  \label{eqn:E}
 \end{equation}
+
 \subsubsection{Flächenträgheitsmoment}
-Um das Elastizitätsmodul E zu bestimmen benötigen wir die Flächenträgheitsmomente, welche wir mit der nachfolgenden Formel aus der Theorie berchnen können.
+Um das Elastizitätsmodul E zu bestimmen benötigen wir das Flächenträgheitsmomente der Stäbe, welches wir mit der nachfolgenden Formel aus der Theorie berechnen können.
 \begin{equation}
-  I = 
+   = \int_Q y^2 \, \mathrm{d}q ,
+  \label{eqn:Flaechentraegheit}
 \end{equation}
+
+Für den Stab 1 mit quadratischem Querschnitt der Kantenlänge $a$ gilt mit $\mathrm{d}q = \mathrm{d}y \, \mathrm{d}z$
+\begin{align}
+  I_1 &= \int_{-a/2}^{a/2} \int_{-a/2}^{a/2} y^2 \, \mathrm{d}z \, \mathrm{d}y \nonumber \\
+      &= a \cdot \left[ \frac{y^3}{3} \right]_{-a/2}^{a/2} \nonumber \\
+      &= a \cdot \frac{a^3}{12} = \frac{a^4}{12}.
+\end{align}
+Setzten wir  $a = \qty{10.72(0.06)}{\milli\meter}$ so erhalten wir $ I_1 = \qty{1100,5}{\milli\meter\tothe{4}} $. %%Referenz zu der Berechnung beim Schall
+
+Die Unsicherheit bestimmen wir mit der Gaußschen Fehlerfortpflanzung.
+Da $I_1$ nur von $a$ abh\"angt, gilt
+\begin{align}
+  \Delta I_1 &= \left|\frac{\partial I_1}{\partial a}\right| \Delta a
+              = \frac{a^3}{3}\,\Delta a \notag \\
+             &= \frac{(\qty{10,72}{\milli\meter})^3}{3} \cdot \qty{0,0624}{\milli\meter} \notag \\
+             &= \qty{25,6}{\milli\meter\tothe{4}}.
+\end{align}
+Damit erhalten wir als Endergebnis $I_1 = \qty{1100(26)}{\milli\meter\tothe{4}}$. \label{sec:I1}
+
+%%Gauß für
+
+Für den Stab 2 mit kreisförmigem Querschnitt vom Radius $r$ verwenden wir Polarkoordinaten mit $y = \rho \sin\varphi$ und $\mathrm{d}q = \rho \, \mathrm{d}\rho \, \mathrm{d}\varphi$:
+\begin{align}
+  I_2 &= \int_0^{2\pi} \int_0^r (\rho \sin\varphi)^2 \, \rho \, \mathrm{d}\rho \, \mathrm{d}\varphi
+       = \int_0^r \rho^3 \, \mathrm{d}\rho \cdot \int_0^{2\pi} \sin^2\varphi \, \mathrm{d}\varphi \nonumber \\
+      &= \frac{r^4}{4} \cdot \pi = \frac{\pi \, r^4}{4}.
+\end{align}
+Setzen wir nun $r = 0.5 \unit{\centi\meter}$ ein so erhalten wir $I_2 = \qty{4.909e-10}{\meter\tothe{4}}$.
+Die Unsicherheit bestimmen wir mit der Gaußschen Fehlerfortpflanzung. Da $I_2$ nur von $r$ abhängt, gilt
+\begin{align}
+  \Delta I_2 &= \left| \frac{\partial I_2}{\partial r} \right| \Delta r = \pi \, r^3 \, \Delta r \nonumber \\
+             &= \pi \cdot (\qty{5.00e-3}{\meter})^3 \cdot \qty{0.025e-3}{\meter} \nonumber \\
+             &= \qty{9.82e-12}{\meter\tothe{4}}.
+\end{align}
+Der Radius ergibt sich aus dem gemessenen Durchmesser zu $r = d/2$. Nach der Gaußschen Fehlerfortpflanzung gilt $\Delta r = \left| \partial r / \partial d \right| \Delta d = \Delta d / 2$, da die Geräteunsicherheit der Schieblehre den Durchmesser betrifft und der Radius genau halb so groß ist.
+Die Unsicherheit des Radius ist daher mit $\Delta r = \qty{0.025}{\milli\meter}$ halb so groß wie die des Durchmessers, die relative Unsicherheit $\Delta r / r = \Delta d / d = 0{,}5\,\%$ ist jedoch gleich.
+Damit erhalten wir als Endergebnis $I_2 = \qty{490(9.8)}{\milli\meter\tothe{4}}$.
 
 \subsubsection{Bestimmung der Steigung m}
 Für die tatsächliche Durchbiegung D bestimmen wir die Differenz zwischen $D_0$ und $D_M$.
@@ -71,7 +111,7 @@ x /\unit{\centi\meter} & D_0 /\unit{\milli\meter} & D_M /\unit{\milli\meter} & D
 \end{table}
 
 %% python programmierung
-Mit Python \ref{sec:python} wird nun die Gerade graphisch dargestellt und die Steigung m bestimmt.
+Mit Python \ref{sec:python} wird nun die Gerade graphisch dargestellt und die Steigung m bestimmt. Den zugehörigen Code findet man im Anhang.
 
 \begin{figure}[H]
   \centering
@@ -97,8 +137,149 @@ und für den zweiten Stab
 \end{equation}
 
 \subsubsection{Berechnung Elastizitätsmodul}
+ 
+%% Nur noch formel einsetzt :))
+Mit $F = M g$, wobei $M$ die angehängte Masse ist, folgt aus \ref{eqn:E}
+\begin{equation}
+  E = \frac{M \cdot g}{2 \cdot I \cdot k}.
+\end{equation}
+Das angehängte Gewicht hat eine Masse $M = 1054.2g$.
+%% Gauß für die Formel mit den Fehlern
+Mit $M = \qty{1054,2}{\gram}$ und $g = \qty{9,81}{\meter\per\second\squared}$ folgt
+\begin{align}
+  E_1 &= \frac{M g}{2 I_1 k_1}
+       = \frac{\qty{1,0542}{\kilo\gram}\cdot\qty{9,81}{\meter\per\second\squared}}
+              {2\cdot\qty{1,1005e-9}{\meter\tothe{4}}\cdot\qty{0,07890}{\per\meter\squared}}
+       = \qty{59,6}{\giga\pascal}, \\
+  E_2 &= \frac{M g}{2 I_2 k_2}
+       = \frac{\qty{1,0542}{\kilo\gram}\cdot\qty{9,81}{\meter\per\second\squared}}
+              {2\cdot\qty{4,909e-10}{\meter\tothe{4}}\cdot\qty{0,06810}{\per\meter\squared}}
+       = \qty{154,7}{\giga\pascal}.
+\end{align}
+
+Für die Gaußsche Fehlerfortpflanzung bilden wir die partiellen Ableitungen
+\begin{align}
+  \frac{\partial E}{\partial M} &= \frac{g}{2 I k}, &
+  \frac{\partial E}{\partial I} &= -\frac{M g}{2 I^2 k}, &
+  \frac{\partial E}{\partial k} &= -\frac{M g}{2 I k^2}.
+\end{align}
+Damit folgt
+\begin{equation}
+  \Delta E = \sqrt{
+    \left(\frac{g\,\Delta M}{2 I k}\right)^2
+    + \left(\frac{M g\,\Delta I}{2 I^2 k}\right)^2
+    + \left(\frac{M g\,\Delta k}{2 I k^2}\right)^2 }.
+\end{equation}
+Einsetzen der Werte liefert dann
+\begin{align}
+  E_1 &= \qty{59,6 (1,4)}{\giga\pascal}, \\
+  E_2 &= \qty{154,7 (3,1)}{\giga\pascal}.
+\end{align}
 
 \subsection{Berechnung durch zweiseitige Auflage}
+
+Für die zweiseitige Auflage gilt nach der Theorie für die Durchbiegung
+\begin{equation}
+  D(x) = \frac{F}{48\,E\,I}\left(3L^2x - 4x^3\right)
+  \qquad \text{für } 0 \le x \le \frac{L}{2},
+\end{equation}
+und für die rechte Hälfte
+\begin{equation}
+  D(x) = \frac{F}{48\,E\,I}\left(4x^3 - 12Lx^2 + 9L^2x - L^3\right)
+  \qquad \text{für } \frac{L}{2} \le x \le L.
+\end{equation}
+Dabei ist $L$ der Abstand der Auflager und entspricht hier genau der Stablänge von $L = 55 \unit{\centi\meter}$ \\
+Dies ist jeweils eine Gerade der Form $D = k \cdot z$ mit
+\begin{equation}
+  k = \frac{F}{48 \cdot E \cdot I},
+\end{equation}
+und
+\begin{equation}
+  z = 3L^2x - 4x^3 \quad \text{bzw.} \quad z = 4x^3 - 12Lx^2 + 9L^2x - L^3 .
+\end{equation}
+Umstellen nach dem Elastizitätsmodul liefert mit $F = M g$
+\begin{equation}
+  E = \frac{M g}{48 \cdot I \cdot k}.
+\end{equation}
+
+\subsubsection{Bestimmung der Steigung k}
+\begin{table}[H]
+  \centering
+  \caption{Messwerte der Durchbiegung bei zweiseitiger Auflage für den ersten Stab.
+           Messuhr 1 befindet sich links, Messuhr 2 rechts von der Last.}
+  \label{tab:zweiseitig}
+  \begin{tabular}{c c c c c c c c c}
+    \toprule
+    & \multicolumn{4}{c}{Messuhr 1 (links)} & \multicolumn{4}{c}{Messuhr 2 (rechts)} \\
+    \cmidrule(lr){2-5} \cmidrule(lr){6-9}
+    Nr. & $x_1/\unit{\centi\meter}$ & $D_{0,1}/\unit{\milli\meter}$ & $D_{M,1}/\unit{\milli\meter}$ & $D_1/\unit{\milli\meter}$
+        & $x_2/\unit{\centi\meter}$ & $D_{0,2}/\unit{\milli\meter}$ & $D_{M,2}/\unit{\milli\meter}$ & $D_2/\unit{\milli\meter}$ \\
+    \midrule
+    1 &  5&  7.74&  7.71    & 0.03  & 50 & 7.42 & 7.33  & 0.09 \\
+    2 &  10&  7.81&  7.73   & 0.08 & 45 & 7.46 & 7.29 & 0.17 \\
+    3 &  12.5&  7.82& 7.69  & 0.13 &  42.5& 7.36 & 7.14 & 0.22 \\
+    4 &  15&   7.87 & 7.70  & 0.17 & 40 & 7.41 & 7.17 &0.24\\
+    5 &  17.5&  7.80&  7.65 & 0.15 & 37.5 & 7.46  &7.10  & 0.36  \\
+    6 &  20&   7.89 &  7.67 & 0.22 &  35& 7.31 & 7.03 & 0.28\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Mit Python erhalten wir die zwei nachfolgenden Grafiken für die beiden Geraden.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{zweiseitig_3.pdf}
+  \caption{Durchbiegung $D$ in Abhängigkeit von .}
+  \label{fig:Fit1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{zweiseitig_4.pdf}
+  \caption{Durchbiegung $D$ in Abhängigkeit von .}
+  \label{fig:Fit2}
+\end{figure}
+
+\subsubsection{Berechnung Elastizitätsmodul} 
+Wir übernehmen das Flächenträgheitsmoment $I_1 = \qty{1100(26)}{\milli\meter\tothe{4}}$ von \ref{sec:I1} da es sich um den gleichen Stab handelt.
+Nun haben wir alle Werte die wir benötigen um das Elastizitätsmodul zu berechnen. 
+Das angehängte Gewicht hat eine Masse $M = 1054.2g$.
+\begin{equation}
+  E = \frac{M g}{48 \cdot I \cdot k}.
+\end{equation}
+Durch einsetzen folgt für die linke Seite mit $k_\text{links} = (0{,}00125 \pm 0{,}00003)\,\si{m^{-2}}$
+\begin{equation}
+    E_\text{links} = \frac{\SI{1,0542}{kg} \cdot \SI{9,81}{m/s^2}}
+    {48 \cdot \SI{1,1005e-9}{m^4} \cdot \SI{0,00125}{m^{-2}}}
+    = \SI{156,6}{GPa}
+\end{equation}
+und für die rechte Seite mit $k_\text{rechts} = (0{,}00212 \pm 0{,}00003)\,\si{m^{-2}}$
+\begin{equation}
+    E_\text{rechts} = \frac{\SI{1,0542}{kg} \cdot \SI{9,81}{m/s^2}}
+    {48 \cdot \SI{1,1005e-9}{m^4} \cdot \SI{0,00212}{m^{-2}}}
+    = \SI{92,3}{GPa}.
+\end{equation}
+Die Unsicherheit bestimmen wir mit der Gaußschen Fehlerfortpflanzung. 
+Die partiellen Ableitungen sind
+\begin{equation}
+    \frac{\partial E}{\partial M} = \frac{g}{48 I k}, \qquad
+    \frac{\partial E}{\partial I} = -\frac{M g}{48 I^2 k}, \qquad
+    \frac{\partial E}{\partial k} = -\frac{M g}{48 I k^2},
+\end{equation}
+und damit
+\begin{equation}
+    \Delta E = \sqrt{\left(\frac{g\,\Delta M}{48 I k}\right)^2
+    + \left(\frac{M g\,\Delta I}{48 I^2 k}\right)^2
+    + \left(\frac{M g\,\Delta k}{48 I k^2}\right)^2}.
+\end{equation}
+Der Beitrag von $\Delta M$ ist gegenüber den anderen Termen vernachlässigbar.
+\begin{align}
+    E_\text{links}  &= \qty{156.6(5.3)}{\giga\pascal}
+ \\
+    E_\text{rechts} &= \qty{92.3(2.5)}{\giga\pascal}
+\end{align}
+
 
 \subsection{Berechnung mit Schallgeschwindigkeit}
 Um mit Hilfe der Schallgeschwindigkeit das Elastizitätsmodul der zwei verschiednen Stäbe zu bestimmen müssen wir zunächt die Dichte berechnen.\\
