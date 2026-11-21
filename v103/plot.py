@@ -52,7 +52,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
-dD = np.sqrt(2) * 0.005e-3   # m, Unsicherheit von D
+dD = np.sqrt(2) * 0.005e-3   # m, Unsicherheit von D (Ablesefehler addiert sich quadratisch)
 modell = lambda z, k: k * z
 
 # ---------------- Zweiseitige Auflage (Stab 1) ----------------

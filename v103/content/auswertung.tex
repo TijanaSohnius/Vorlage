@@ -1,23 +1,23 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
-\subsection{Berchnung durch einseitige Auflage}
+\subsection{Berechnung durch einseitige Auflage}
 Aus der Theorie kennen wir diese Formel für die Durchbiegung 
 \begin{equation}
   D(x) = \frac{F}{2EI} \left( L x^2 - \frac{x^3}{3} \right) \qquad \text{für } 0 \le x \le L
   \label{eqn:Durchbiegung1}
 \end{equation}
-Dies ist eine Gerade der Form $y = m \cdot z$ mit $m = \frac{F}{2EI}$ als Steigung und $z = L x^2 - \frac{x^3}{3}$.
-Stellen wir die Steigung m um so erhalten wir die Formel für das Elastizitätsmodul.
+Dies ist eine Gerade der Form $y = k \cdot z$ mit $k = \frac{F}{2EI}$ als Steigung und $z = L x^2 - \frac{x^3}{3}$.
+Stellen wir die Steigung k um so erhalten wir die Formel für das Elastizitätsmodul.
 \begin{equation}
-  E = \frac{F}{2 \cdot I \cdot m}
+  E = \frac{F}{2 \cdot I \cdot k}
   \label{eqn:E}
 \end{equation}
 
 \subsubsection{Flächenträgheitsmoment}
-Um das Elastizitätsmodul E zu bestimmen benötigen wir das Flächenträgheitsmomente der Stäbe, welches wir mit der nachfolgenden Formel aus der Theorie berechnen können.
+Um das Elastizitätsmodul E zu bestimmen benötigen wir die Flächenträgheitsmomente der Stäbe, welches wir mit der nachfolgenden Formel aus der Theorie berechnen können.
 \begin{equation}
-   = \int_Q y^2 \, \mathrm{d}q ,
+   I = \int_Q y^2 \, \mathrm{d}q ,
   \label{eqn:Flaechentraegheit}
 \end{equation}
 
@@ -27,7 +27,7 @@ Für den Stab 1 mit quadratischem Querschnitt der Kantenlänge $a$ gilt mit $\ma
       &= a \cdot \left[ \frac{y^3}{3} \right]_{-a/2}^{a/2} \nonumber \\
       &= a \cdot \frac{a^3}{12} = \frac{a^4}{12}.
 \end{align}
-Setzten wir  $a = \qty{10.72(0.06)}{\milli\meter}$ so erhalten wir $ I_1 = \qty{1100,5}{\milli\meter\tothe{4}} $. %%Referenz zu der Berechnung beim Schall
+Setzen wir  $a = \qty{10.72(0.06)}{\milli\meter}$ so erhalten wir $ I_1 = \qty{1100,5}{\milli\meter\tothe{4}} $. %%Referenz zu der Berechnung beim Schall
 
 Die Unsicherheit bestimmen wir mit der Gaußschen Fehlerfortpflanzung.
 Da $I_1$ nur von $a$ abh\"angt, gilt
@@ -56,9 +56,9 @@ Die Unsicherheit bestimmen wir mit der Gaußschen Fehlerfortpflanzung. Da $I_2$ 
 \end{align}
 Der Radius ergibt sich aus dem gemessenen Durchmesser zu $r = d/2$. Nach der Gaußschen Fehlerfortpflanzung gilt $\Delta r = \left| \partial r / \partial d \right| \Delta d = \Delta d / 2$, da die Geräteunsicherheit der Schieblehre den Durchmesser betrifft und der Radius genau halb so groß ist.
 Die Unsicherheit des Radius ist daher mit $\Delta r = \qty{0.025}{\milli\meter}$ halb so groß wie die des Durchmessers, die relative Unsicherheit $\Delta r / r = \Delta d / d = 0{,}5\,\%$ ist jedoch gleich.
-Damit erhalten wir als Endergebnis $I_2 = \qty{490(9.8)}{\milli\meter\tothe{4}}$.
+Damit erhalten wir als Endergebnis $I_2 = \qty{490.9(9.8)}{\milli\meter\tothe{4}}$.
 
-\subsubsection{Bestimmung der Steigung m}
+\subsubsection{Bestimmung der Steigung k}
 Für die tatsächliche Durchbiegung D bestimmen wir die Differenz zwischen $D_0$ und $D_M$.
 \begin{table}[H]
 \centering
@@ -84,6 +84,7 @@ x /\unit{\centi\meter} & D_0 /\unit{\milli\meter} & D_M /\unit{\milli\meter} & D
 \bottomrule
 \end{tblr}
 \end{table}
+Der Wert für $x= 45 \unit{\centi\meter}$ fällt weg, da der Messbereich der Messuhr überschritten wurde und uns nur noch $D_M = 0$ angezeigt wurde.
 
 \begin{table}[H]
 \centering
@@ -105,13 +106,12 @@ x /\unit{\centi\meter} & D_0 /\unit{\milli\meter} & D_M /\unit{\milli\meter} & D
 30.0 & 7.25 & 4.17 &  3.08\\
 35.0 & 6.98 & 3.05 &  3.93\\
 40.0 & 6.65 & 1.79 &  4.86\\
-45.0 & 6.42 & 0.56 &  \\
 \bottomrule
 \end{tblr}
 \end{table}
 
 %% python programmierung
-Mit Python \ref{sec:python} wird nun die Gerade graphisch dargestellt und die Steigung m bestimmt. Den zugehörigen Code findet man im Anhang.
+Mit Python wird nun die Gerade graphisch dargestellt und die Steigung k bestimmt. Den zugehörigen Code findet man im Anhang.
 
 \begin{figure}[H]
   \centering
@@ -188,7 +188,7 @@ und für die rechte Hälfte
   D(x) = \frac{F}{48\,E\,I}\left(4x^3 - 12Lx^2 + 9L^2x - L^3\right)
   \qquad \text{für } \frac{L}{2} \le x \le L.
 \end{equation}
-Dabei ist $L$ der Abstand der Auflager und entspricht hier genau der Stablänge von $L = 55 \unit{\centi\meter}$ \\
+Dabei ist $L$ der Abstand der Auflager und entspricht $L = 55 \unit{\centi\meter}$. \\
 Dies ist jeweils eine Gerade der Form $D = k \cdot z$ mit
 \begin{equation}
   k = \frac{F}{48 \cdot E \cdot I},
@@ -225,7 +225,7 @@ Umstellen nach dem Elastizitätsmodul liefert mit $F = M g$
   \end{tabular}
 \end{table}
 
-Mit Python erhalten wir die zwei nachfolgenden Grafiken für die beiden Geraden.
+Mit Python erhalten wir die zwei nachfolgenden Grafiken für die beiden Geraden. Zu beachten ist, dass der Fit durch den Ursprung gehen muss, da $D(0)=0$.
 
 \begin{figure}[H]
   \centering
@@ -282,7 +282,7 @@ Der Beitrag von $\Delta M$ ist gegenüber den anderen Termen vernachlässigbar.
 
 
 \subsection{Berechnung mit Schallgeschwindigkeit}
-Um mit Hilfe der Schallgeschwindigkeit das Elastizitätsmodul der zwei verschiednen Stäbe zu bestimmen müssen wir zunächt die Dichte berechnen.\\
+Um mit Hilfe der Schallgeschwindigkeit das Elastizitätsmodul der zwei verschiedenen Stäbe zu bestimmen müssen wir zunächst die Dichte berechnen.\\
 Die Formel für die Dichte lautet wie folgt: 
 \begin{equation}
   \rho = \frac{m}{V}
@@ -291,9 +291,9 @@ Die Formel für die Dichte lautet wie folgt:
 
 \subsubsection{ Dichte des ersten Stabes}
 \label{sec:Stab1}
-Für den rechteckigen silbernen Stab haben wir die Länge $l = \qty{60(0.1)}{\centi\meter}$ und das Gewicht $m = \qty{167.5(0.1)}{\gram}$ gemessen.\\
+Für den quadratischen silbernen Stab haben wir die Länge $l = \qty{60(0.1)}{\centi\meter}$ und das Gewicht $m = \qty{167.5(0.1)}{\gram}$ gemessen.\\
 Aufgrund der Skalierung verwenden wir für das Maßband die Geräteunsicherheit von $1 \unit{\milli\meter}$. Für die Waage war eine Geräteunsicherheit von $d = \qty{0.1}{\gram}$ angegeben.\\
-Für die Katenlänge a haben wir mehrere Messungen durchgeführt und die nachfolgende Tabelle \ref{tab:Kantenlange} erhalten.
+Für die Kantenlänge a haben wir mehrere Messungen durchgeführt und die nachfolgende Tabelle \ref{tab:Kantenlange} erhalten.
 \begin{table}[H]
 \centering
 \caption{Messwerte Kantenlänge}
@@ -346,7 +346,7 @@ Die Geräteunsicherheit der Schieblehre beträgt $\Delta a_\text{Gerät} = \qty{
            &= \qty{0.0624}{\milli\meter}.
 \end{align}
 
-Damit lautet das Endergebnis für die Katenlänge
+Damit lautet das Endergebnis für die Kantenlänge
 \begin{equation}
   a = \qty{10.72(0.06)}{\milli\meter}.
 \end{equation}
@@ -354,7 +354,7 @@ Damit lautet das Endergebnis für die Katenlänge
 \begin{equation}
   V_2 = a^2 \cdot l
 \end{equation}
-Setzten wir die Formel für das Volumen in \ref{eqn:Dichte} ein so erhalten wir
+Setzen wir die Formel für das Volumen in \ref{eqn:Dichte} ein so erhalten wir
 \begin{equation}
   \rho = \frac{m}{a^2 \cdot l}
   \label{eqn:Dichte1}
@@ -385,13 +385,13 @@ Diese werden in \eqref{eqn:Gauss1} eingesetzt und wir erhalten die fertige Forme
   }
 \end{equation}
 
-Durch einsetzten unserer Werte erhalten wir $\Delta\rho_1 = \qty{0.0286}{\gram\per\centi\metre\cubed}$ und für die Dichte letztendlich den Wert $\rho_1 = \qty{2.43(0.03)}{\gram\per\centi\metre\cubed}$.\\
+Durch einsetzen unserer Werte erhalten wir $\Delta\rho_1 = \qty{0.0286}{\gram\per\centi\metre\cubed}$ und für die Dichte letztendlich den Wert $\rho_1 = \qty{2.43(0.03)}{\gram\per\centi\metre\cubed}$.\\
 Unsere berechnete Dichte lässt darauf schließen, dass der Stab wahrscheinlich aus einer Aluminium-Legierung ist, da Aluminium die Dichte $ \rho = \qty{2.7}{\gram\per\centi\metre\cubed}$ besitzt.
 %%
 
 \subsubsection{Dichte des zweiten Stabes}
-Für den kupferfarbenden runden Stab haben wir die Länge $l = \qty{59(0.1)}{\centi\meter}$ , das Gewicht $m = \qty{412(0.1)}{\gram}$ und den Durchmesser als $d = \qty{10(0.05)}{\milli\meter}$ bestimmt. Aufgrund von möglichen Ungenauigkeiten bei der Messung haben wir den Durchmesser fünfmal gemessen.
-Es kam jedoch jedes Mal genau 1cm bei dem Messen mit der Schiebelehre heraus. Da die selben Geräte verwendet wurden sind die Geräteunsicherhieten gleich wie bei dem ersten Stab \ref{sec:Stab1}.
+Für den kupferfarbene runden Stab haben wir die Länge $l = \qty{59(0.1)}{\centi\meter}$ , das Gewicht $m = \qty{412(0.1)}{\gram}$ und den Durchmesser als $d = \qty{10(0.05)}{\milli\meter}$ bestimmt. Aufgrund von möglichen Ungenauigkeiten bei der Messung haben wir den Durchmesser fünfmal gemessen.
+Es kam jedoch jedes Mal genau 1cm bei dem Messen mit der Schieblehre heraus. Da dieselben Geräte verwendet wurden sind die Geräteunsicherheiten gleich wie bei dem ersten Stab \ref{sec:Stab1}.
 Da es sich um einen kreisförmigen Querschnitt handelt lässt sich das Volumen mit der folgenden Formel berchnen:
 \begin{equation}
   V_2 = \pi r^2 \cdot l
@@ -418,7 +418,7 @@ Nun bilden wir die partiellen Ableitungen.
   \frac{\partial \rho}{\partial r} &= -\frac{2m}{\pi r^3 l} \\[1ex]
   \frac{\partial \rho}{\partial l} &= -\frac{m}{\pi r^2 l^2}
 \end{align}
-Zum Schluss werden diese nur noch in \ref{eqn:Gauß2} eingesetzt und wier erhalten die fertige Formel.
+Zum Schluss werden diese nur noch in \ref{eqn:Gauß2} eingesetzt und wir erhalten die fertige Formel.
 \begin{equation}
   \Delta\rho = \sqrt{
     \left( \frac{\Delta m}{\pi r^2 l} \right)^2 +
@@ -430,7 +430,7 @@ Durch einsetzten unserer Werte erhalten wir $\Delta\rho = \qty{0.089}{\gram\per\
 Unsere berechnete Dichte lässt darauf schließen, dass der Stab wahrscheinlich aus Kupfer ist, da Kupfer die Dichte $ \rho = \qty{8.96}{\gram\per\centi\metre\cubed}$ besitzt.
 
 \subsubsection{Laufzeitmessung}
-Um die Schallgeschwindikeit c zu bestimmen wurden pro Stab jeweils 10 Messungen durchgeführt \ref{sec:DurchführungSchall}.
+Um die Schallgeschwindigkeit c zu bestimmen wurden pro Stab jeweils 10 Messungen durchgeführt \ref{sec:DurchführungSchall}.
 % Tabelle mit den Messwerten 
 \begin{table}[H]
 \centering
@@ -522,7 +522,7 @@ Damit lauten die Ergebnisse
 Die Geräteunsicherheit des Zählers von $\Delta t_\text{Gerät} = \qty{1}{\micro\second}$ ist gegenüber dem Standardfehler des Mittelwerts von etwa $\qty{40}{\micro\second}$ bzw. $\qty{46}{\micro\second}$ vernachlässigbar klein und wird daher nicht berücksichtigt.\\
 %%
 
-Da der Impulszähler die doppelte Laufzeit anzeigt lässt sich die Schallgeschwindikeit c wie folgt berechnen:
+Da der Impulszähler die doppelte Laufzeit anzeigt lässt sich die Schallgeschwindigkeit c wie folgt berechnen:
 \begin{equation}
   c = \frac{2l \cdot n}{t}
 \end{equation}
@@ -545,7 +545,7 @@ Durch umstellen erhalten wir:
   \label{eqn:Eformel}
 \end{equation}
 
-Setzten wir die Schallgeschwindigkeit \ref{eqn:Schall} in \ref{eqn:Eformel} ein so erhalten wir: 
+Setzen wir die Schallgeschwindigkeit \ref{eqn:Schall} in \ref{eqn:Eformel} ein so erhalten wir: 
 \begin{equation}
   E = \rho \cdot \left( \frac{20 \cdot l}{t} \right)^2
   \label{eqn:Eformel2}
@@ -593,7 +593,7 @@ Diese werden in \eqref{eqn:GaussE} eingesetzt, und wir erhalten die fertige Form
   \label{eqn:GaussE2}
 \end{equation}
 
-Für Stab 1 mit $\rho_1 = \left( \num{2429} \pm \num{30} \right) \unit{\kilo\gram\per\meter\cubed}$, $l_1 = \left( \num{0.600} \pm \num{0.001} \right) \unit{\meter}$ und $t_1 = \left( \num{2357e-6} \pm \num{40e-6} \right) \unit{\second}$ erhalten wir durch einsetzten der Werte in \ref{eqn:GaussE2}
+Für Stab 1 mit $\rho_1 = \left( \num{2429} \pm \num{30} \right) \unit{\kilo\gram\per\meter\cubed}$, $l_1 = \left( \num{0.600} \pm \num{0.001} \right) \unit{\meter}$ und $t_1 = \left( \num{2357e-6} \pm \num{40e-6} \right) \unit{\second}$ erhalten wir durch einsetzen der Werte in \ref{eqn:GaussE2}
 $E_1 = \left( \num{63.0} \pm \num{2.3} \right) \unit{\giga\pascal}$.
 
 Für Stab 2 mit $\rho_2 = \left( \num{8891} \pm \num{90} \right) \unit{\kilo\gram\per\meter\cubed}$, $l_2 = \left( \num{0.590} \pm \num{0.001} \right) \unit{\meter}$ und $t_2 = \left( \num{2904e-6} \pm \num{46e-6} \right) \unit{\second}$ erhalten wir $E_2 = \left( \num{146.8} \pm \num{4.9} \right) \unit{\giga\pascal}$.
