@@ -2,6 +2,101 @@
 \label{sec:Auswertung}
 
 \subsection{Berchnung durch einseitige Auflage}
+Aus der Theorie kennen wir diese Formel für die Durchbiegung 
+\begin{equation}
+  D(x) = \frac{F}{2EI} \left( L x^2 - \frac{x^3}{3} \right) \qquad \text{für } 0 \le x \le L
+  \label{eqn:Durchbiegung1}
+\end{equation}
+Dies ist eine Gerade der Form $y = m \cdot z$ mit $m = \frac{F}{2EI}$ als Steigung und $z = L x^2 - \frac{x^3}{3}$.
+Stellen wir die Steigung m um so erhalten wir die Formel für das Elastizitätsmodul.
+\begin{equation}
+  E = \frac{F}{2 \cdot I \cdot m}
+\end{equation}
+\subsubsection{Flächenträgheitsmoment}
+Um das Elastizitätsmodul E zu bestimmen benötigen wir die Flächenträgheitsmomente, welche wir mit der nachfolgenden Formel aus der Theorie berchnen können.
+\begin{equation}
+  I = 
+\end{equation}
+
+\subsubsection{Bestimmung der Steigung m}
+Für die tatsächliche Durchbiegung D bestimmen wir die Differenz zwischen $D_0$ und $D_M$.
+\begin{table}[H]
+\centering
+\caption{Messwerte der Durchbiegung bei einseitiger Einspannung für den ersten Stab}
+\label{tab:Durchbiegung1}
+\sisetup{table-format=2.2}
+\begin{tblr}{
+colspec = {S[table-format=2.1] S[table-format=1.2] S[table-format=1.2] S[table-format=1.2]},
+row{1} = {guard, mode=math},
+}
+\toprule
+x /\unit{\centi\meter} & D_0 /\unit{\milli\meter} & D_M /\unit{\milli\meter} & D /\unit{\milli\meter} \\
+\midrule
+5.0  & 7.68 & 7.51 & 0.17 \\
+10.0 & 7.65 & 7.15 & 0.50 \\
+15.0 & 7.61 & 6.52 & 1.09 \\
+20.0 & 7.48 & 5.69 &  1.79\\
+25.0 & 7.32 & 4.69 &  2.63\\
+30.0 & 7.18 & 3.58 &  3.60\\
+35.0 & 6.92 & 2.29 &  4.63\\
+40.0 & 6.70 & 0.89 &  5.81\\
+45.0 & 6.42 & \text{nicht messbar} &  \\
+\bottomrule
+\end{tblr}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Messwerte der Durchbiegung bei einseitiger Einspannung für den zweiten Stab}
+\label{tab:Durchbiegung2}
+\sisetup{table-format=2.2}
+\begin{tblr}{
+colspec = {S[table-format=2.1] S[table-format=1.2] S[table-format=1.2] S[table-format=1.2]},
+row{1} = {guard, mode=math},
+}
+\toprule
+x /\unit{\centi\meter} & D_0 /\unit{\milli\meter} & D_M /\unit{\milli\meter} & D /\unit{\milli\meter} \\
+\midrule
+5.0  & 8.00 & 7.84 & 0.16 \\
+10.0 & 7.95 & 7.49 &  0.46\\
+15.0 & 7.82 & 6.90 &  0.92\\
+20.0 & 7.63 & 6.12 &  1.51\\
+25.0 & 7.44 & 5.21 &  2.23\\
+30.0 & 7.25 & 4.17 &  3.08\\
+35.0 & 6.98 & 3.05 &  3.93\\
+40.0 & 6.65 & 1.79 &  4.86\\
+45.0 & 6.42 & 0.56 &  \\
+\bottomrule
+\end{tblr}
+\end{table}
+
+%% python programmierung
+Mit Python \ref{sec:python} wird nun die Gerade graphisch dargestellt und die Steigung m bestimmt.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{build/Stab_1.pdf}
+  \caption{Durchbiegung $D$ in Abhängigkeit von $z = Lx^2 - x^3/3$ für den ersten Stab mit linearer Ausgleichsgeraden.}
+  \label{fig:Fit1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{build/Stab_2.pdf}
+  \caption{Durchbiegung $D$ in Abhängigkeit von $z = Lx^2 - x^3/3$ für den zweiten Stab mit linearer Ausgleichsgeraden.}
+  \label{fig:Fit2}
+\end{figure}
+
+Aus der linearen Ausgleichsrechnung ergibt sich für die Steigung des ersten Stabes
+\begin{equation}
+  k_1 = \left( \num{0.07890} \pm \num{0.00006} \right) \unit{\per\meter\squared}
+\end{equation}
+und für den zweiten Stab
+\begin{equation}
+  k_2 = \left( \num{0.06810} \pm \num{0.00006} \right) \unit{\per\meter\squared}.
+\end{equation}
+
+\subsubsection{Berechnung Elastizitätsmodul}
 
 \subsection{Berechnung durch zweiseitige Auflage}
 
