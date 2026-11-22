@@ -1,4 +1,130 @@
 \section{Theorie}
 \label{sec:Theorie}
 
+\subsection{Problemstellung}
+Wie stark sich der Körper dabei verformt, bildet die relative Längenänderung $\frac{\increment L }{L}$ ab. Ist diese relative Änderung hinreichend klein, besteht ein linearer Zusammenhang zwischen der Deformation $\increment L / L$ und der angreifenden Normalspannung $\sigma$.\\
+Wenn Kräfte an der Oberfläche eines Körpers angreifen, kann sich dessen Form oder Volumen verändern. Rechnet man diese Kräfte auf eine Flächeneinheit um, landet man bei der Spannung. Drückt oder zieht die Kraft senkrecht auf die Oberfläche, nennt man das Normalspannung $\sigma$ (bzw. Druck), läuft sie parallel zur Oberfläche, ist es eine Tangential- oder Schubspannung.\\
+Dieser Zusammenhang wird durch das Hookesche Gesetz beschrieben:\\
+\begin{equation}
+  \sigma = E \frac{\increment L }{L}  
+\end{equation}
+Der Proportionalitätsfaktor darin ist das Elastizitätsmodul E, eine zentrale Konstante, die verrät, wie steif oder nachgiebig ein Material ist.\\
+Um E im Versuch gut messen zu können, nutzt man oft die Biegung. Schon mit vergleichsweise kleinen Kräften entsteht an einem Probestab eine Verformung, die sich gut ablesen lässt. Hierfür wird ein Versuchsaufbau benötigt, der eine definierte Kraft F kontrolliert an der Probe angreifen lässt. Allerdings kann eine elastische Nachwirkung das Ergebnis über das Messverfahren verfälschen. Man muss also das Verfahren passend zum Material wählen.\\
 
+\subsection{Durchbiegung bei einseitig eingespanntem homogenem Stab}
+Bei der Biegung eines Stabes entstehen unterschiedliche Längenänderungen über seinen Querschnitt Q. Bei einseitiger Einspannung werden die oberen Schichten gedehnt und erfahren Zugspannungen, während die unteren Schichten gestaucht werden und unter Druckspannungen stehen. Zwischen diesen Bereichen befindet sich die neutrale Faser. Sie verändert bei der Biegung ihre Länge nicht und ist spannungsfrei.\\
+Eine äußere Kraft F erzeugt ein Drehmoment (MF), das den Stab verformt und nach unten biegen möchte, während die innere Spannung des Materials mit einem rückstellenden Moment ($M \sigma $) dagegenhält.\\
+Die Durchbiegung wird durch $D(x)$ beschrieben. Sie gibt die Verschiebung eines Punktes in Abhängigkeit von seinem Abstand x zur Einspannstelle an.\\
+\subsubsection{Herleitung der Durchbiegungsformel}
+Wir betrachten ein horizontal einseitig eingespannter Stab der Länge L mit Querschnitt Q, an dessen freiem Ende, bei x = L, eine Kraft F angreift.\\
+\paragraph{Aufstellen der Drehmomentgleichung}
+An einem Querschnitt Q im Abstand x von der Einspannung stehen zwei Drehmomente im Gleichgewicht, der äußere und das innere Drehmoment.
+Für den äußere Drehmoment gilt Kraft × Hebelarm, hier:\\
+\begin{equation}
+  F(L- x)=M_F
+\end{equation}
+und für den inneren Drehmoment:\\
+\begin{equation}
+  M_{\sigma}= \int_{Q} y \sigma(y) \symup{d}q
+\end{equation}
+Im Gleichgewicht müssen beide Drehmomente gleich groß sein:\\
+\begin{equation}
+  \int_{Q} y \sigma(y) \symup{d}q =  F(L- x)
+\end{equation}
+\paragraph{Hookesches Gesetz}
+Nach dem Hookeschen Gesetz gilt:\\ 
+\begin{equation}
+  \sigma(y) = E \left(\frac{\delta x}{\increment x} \right)
+\end{equation}
+Aus der Abbildung kann man für die Geometrie folgendes entnehmen:\\ 
+(1) Ein winziges Stück des Stabes hat im ungebogenen Zustand die Länge $\increment x $. Beim Biegen krümmt sich dieses Stück wie ein Kreisbogen mit dem Krümmungsradius R, gemessen bis zur neutral Faser. Im Kreis gilt allgemein: Bogenlänge = Radius × Mittelpunktswinkel.\\ 
+Daher gilt:\\ 
+\begin{equation}
+ \increment x \approx R \increment \phi \implies \increment \phi \approx \frac{\increment x}{R}
+\end{equation}
+(2) Eine Faser im Abstand y von der neutralen Faser beschreibt ebenfalls einen Kreisbogen mit demselben Öffnungswinkel $\increment \phi$, aber mit einem anderen Radius und zwar $R + y$. Der Unterschied in der Bogenlänge zur neutralen Faser ist die Längenänderung $\delta x$:\\ 
+ \begin{equation}
+    \delta x = (R + y) \increment \phi - R  \increment \phi = y  \increment \phi 
+\end{equation}
+Setzt man nun $\increment \phi$ in die Formel ein, ergibt sich:\\ 
+ \begin{equation}
+   \delta x = y \frac{\increment x}{R}
+\end{equation}
+Diese Formel setzen wir nun in das Hookesche Gesetz ein:\\ 
+ \begin{equation}
+   \sigma (y) = E\frac{y}{R}
+\end{equation}
+\paragraph{Krümmung und Durchbiegung}
+Oben haben wir die Formel für das Gleichgewicht hergeleitet. In diese Formel können wir nun $\sigma (y) = E\frac{y}{R} $ einsetzten. Mit der Definition des Flächenträgheitsmoments $ I = \int_{Q} y^2 dq $ ergibt sich nun der Ausdruck:\\ 
+\begin{equation}
+   \frac{1}{R} = \frac{F (L - x)}{EI}
+\end{equation}
+Für kleine Durchbiegungen (d.h. geringe Neigung, $ \left(\frac{dD}{dx} \right)^{2} << 1$) lässt sich die Krümmung $1/R$ durch die zweite Ableitung der Biegelinie $D(x)$ annähern mit $ 1/R \approx \frac{d^2 D}{dx^2}$. Damit lautet die Differentialgleichung:\\ 
+\begin{equation}
+   \frac{d^2 D}{dx^2} = \frac{F}{EI} (L - x)
+\end{equation}
+Durch zweimalige Integration und Verwendung folgenden Bedingungen:\\ 
+\begin{enumerate}
+    \item An der Einspannung (x=0) ist der Stab horizontal eingespannt, die Steigung ist dort null: $\frac{dD}{dx} = 0 $
+    \item An der Einspannstelle (x=0) gibt es keine Durchbiegung: $D(0)=0$
+\end{enumerate}
+ergibt sich als Endergebnis:\\ 
+\begin{equation}
+   D(x)= \frac{F}{2EI}\left(Lx^2 - \frac{x^3}{3} \right) (\text{für } 0 \leq x \leq L) 
+\end{equation}
+\subsubsection{Durchbiegung bei beidseitig eingespanntem homogenem Stab}
+Eine Durchbiegung des Stabes lässt sich auch erzielen, indem man ihn an beiden Enden lagert und in der Stabmitte mit einer Kraft F belastet.\\ 
+\paragraph{Herleitung der Formel}
+Wir betrachten einen beidseitig aufgelegten homogenen Stab der Länge L, an dessen Enden $x=0$ und $x=L$ jeweils die Auflagerkräfte $F_{A1}= F_{A2}$ nach oben wirken, während in der Mitte mit $x =L/2$ die Kraft F nach unten drückt. Daraus ergibt sich für die Kräfte:\\
+\begin{equation}
+   F_{A1}= F_{A2} = F/2
+\end{equation}
+\paragraph{Biegemoment}
+Wir betrachten zunächst die linke Stabhälfte mit  $0 \leq x \leq L/2$.\\ 
+Die Auflagerkraft $F/2$  erzeugt an der Stelle x ein Biegemoment von:\\ 
+\begin{equation}
+   M_F(x) = - \frac{F}{2} x
+\end{equation}
+Für die rechte Stabhälfte gilt mit $ L/2 \leq x \leq L$:\\ 
+\begin{equation}
+   M_F(x) = - \frac{F}{2} (L-x)
+\end{equation}
+Aus der Herleitung der Gleichung, für den einseitig eingespannten Stab, wissen wir bereit das gilt $ \frac{d^2 D}{dx^2} =\frac{MF}{EI}$
+Nun setzten wir jeweils beide Biegemomente in die Formeln ein und erhalten:\\ 
+Für $0 \leq x \leq L/2$:\\ 
+\begin{equation}
+  \frac{d^2 D}{dx^2} = - \frac{F}{2EI} x
+\end{equation}
+Und für $ L/2 \leq x \leq L$:\\ 
+\begin{equation}
+  \frac{d^2 D}{dx^2} = - \frac{F}{2EI} (L - x) = - \frac{F}{2EI} L + \frac{F}{2EI} x
+\end{equation}
+\paragraph{Differentialgleichung Lösen}
+Auch diese beiden Gleichungen integrieren wir jeweils zweimal und nutzen dafür die folgenden Bedingungen:\\ 
+\begin{enumerate}
+    \item An der Einspannung (x=0) ist der Stab horizontal eingespannt, die Steigung ist dort null: $\frac{dD}{dx} = 0 $
+    \item An der Einspannstelle (x=0) gibt es keine Durchbiegung: $D(0)=0$
+\end{enumerate}
+Für Gl. 1 ergibt sich mit Hilfe der Bedingungen:\\
+\begin{equation}
+  C_1 = \frac{FL^2}{16EI} ; C_2 = 0 
+\end{equation}
+Womit wir auf die Endgleichung \\
+\begin{equation}
+  D(x) = \frac{F}{48EI} (3 L^2 x - 4x^3) (\text{für} 0 \leq x \leq \frac{L}{2}) 
+\end{equation}
+kommen.\\
+Für Gl. 2 ergibt sich mit Hilfe der Bedingungen:
+\begin{equation}
+  C_{1'} = \frac{3FL^2}{16EI} ; C_{2'} = -  \frac{FL^3}{48EI}
+\end{equation}
+Womit wir auf die Endgleichung \\
+\begin{equation}
+  D(x) = \frac{F}{48EI} (- 4x^3 + 12Lx^2 - 9L^2 x + L^3) (\text{für} \frac{L}{2} \leq x \leq L) 
+\end{equation}
+kommen.\\
+\subsection{Schallgeschwindigkeit}
+\subsubsection{Zusammenhang zwischen Elastizitätsmodul E und Schallgeschwindigkeit c}
+Es gibt einen Zusammenhang zwischen den Elastizitätsmodul E und der Schallgeschwindigkeit c. Durch Messung der Schallgeschwindigkeit c, hier durch Stäbe, lässt sich der Elastizitätsmodul E bestimmen.\\
+Schall breitet sich generell in Festkörpern als Longitudinal-, Transversal-, Dehn- oder Biegewellen aus. Durch abwechselnde Dehnung und Spannung, in Längsrichtung, entstehen in einem dünnen und langen Stab elastische Longitudinalwellen. Solange der Stab deutlich länger als dick ist, hängt die Ausbreitungsgeschwindigkeit ausschließlich von Elastizitätsmodul und Dichte ab. Im Folgenden leiten wir die Gleichung her, womit dies gezeigt wird.\\
+Das Phänomen der elastischen Nachwirkung, spielt in diesem Versuch keine Rolle. \\
