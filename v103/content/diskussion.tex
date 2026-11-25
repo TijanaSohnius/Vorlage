@@ -1,2 +1,47 @@
 \section{Diskussion}
 \label{sec:Diskussion}
+\sisetup{range-phrase = { bis }, locale = DE}
+
+\begin{table}
+  \centering
+  \caption{Elastizitätsmodul $E$ der beiden Stäbe, bestimmt mit den drei Messverfahren, im Vergleich zu den Literaturwerten.}
+  \label{tab:E_vergleich}
+  \begin{tabular}{l S[table-format=3.1(2)] S[table-format=3.1(2)]}
+    \toprule
+    {Methode} & {Stab 1 (Al) $E/\unit{\giga\pascal}$} & {Stab 2 (Cu) $E/\unit{\giga\pascal}$} \\
+    \midrule
+    Einseitige Einspannung       & 59.6(14)  & 154.7(31) \\
+    Zweiseitige Auflage (links)  & 156.6(53) & {--} \\
+    Zweiseitige Auflage (rechts) & 92.3(25)  & {--} \\
+    Schallgeschwindigkeit        & 63.0(23)  & 146.8(49) \\
+    \midrule
+    Literaturwert                & {70}      & {\numrange{110}{130}} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+Tabelle~\ref{tab:E_vergleich} stellt die bestimmten Elastizitätsmodule den
+Literaturwerten gegenüber. Die relative Abweichung wird dabei als
+$\left|E_\text{exp} - E_\text{lit}\right| / E_\text{lit}$ angegeben.
+
+Für Stab 1 liefern die einseitige Einspannung ($E = \SI{59.6(14)}{\giga\pascal}$)
+und die Schallgeschwindigkeitsmessung ($E = \SI{63.0(23)}{\giga\pascal}$) zueinander
+passende Werte, die etwas unterhalb des Literaturwertes für Aluminium von
+\SI{70}{\giga\pascal} liegen. Die relativen Abweichungen betragen \SI{14.9}{\percent}
+bzw. \SI{10.0}{\percent}. Beide Werte sind damit für eine Aluminium-Legierung
+plausibel, da das Elastizitätsmodul je nach Legierung schwankt.
+Die Ergebnisse der zweiseitigen Auflage
+($E_\text{links} = \SI{156.6(53)}{\giga\pascal}$,
+$E_\text{rechts} = \SI{92.3(25)}{\giga\pascal}$) weichen mit \SI{124}{\percent} bzw.
+\SI{32}{\percent} stark vom Literaturwert und deutlich voneinander ab. Sie
+erlauben daher keine klare Aussage über das Elastizitätsmodul des Stabes.
+Mögliche Ursachen werden in Abschnitt~\ref{sec:fehlerquellen} diskutiert. %%Fehlerquellen ergänzen
+
+Für Stab 2 liegen beide Messwerte oberhalb des Literaturbereichs für Kupfer von
+\SIrange{110}{130}{\giga\pascal}. Die Schallgeschwindigkeitsmessung
+($E = \SI{146.8(49)}{\giga\pascal}$) weicht um \SI{22}{\percent} vom Mittelwert
+\SI{120}{\giga\pascal} ab, die einseitige Einspannung
+($E = \SI{154.7(31)}{\giga\pascal}$) um \SI{29}{\percent}. Auch gegenüber der
+Obergrenze von \SI{130}{\giga\pascal} bleiben Abweichungen von \SI{13}{\percent}
+bzw. \SI{19}{\percent}. Die beiden Verfahren stimmen untereinander besser
+überein als mit der Literatur, was auf einen systematischen Fehler oder
+eine abweichende Zusammensetzung des Stabes hindeutet.

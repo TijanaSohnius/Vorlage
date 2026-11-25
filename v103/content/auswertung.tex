@@ -25,18 +25,17 @@ Für den Stab 1 mit quadratischem Querschnitt der Kantenlänge $a$ gilt mit $\ma
 \begin{align}
   I_1 &= \int_{-a/2}^{a/2} \int_{-a/2}^{a/2} y^2 \, \mathrm{d}z \, \mathrm{d}y \nonumber \\
       &= a \cdot \left[ \frac{y^3}{3} \right]_{-a/2}^{a/2} \nonumber \\
-      &= a \cdot \frac{a^3}{12} = \frac{a^4}{12}.
+      &= \frac{a^4}{12}.
 \end{align}
-Setzen wir  $a = \qty{10.72(0.06)}{\milli\meter}$ so erhalten wir $ I_1 = \qty{1100,5}{\milli\meter\tothe{4}} $. %%Referenz zu der Berechnung beim Schall
+Setzen wir  $a = \qty{10.72(0.06)}{\milli\meter}$ \ref{sec:aBerechnung} ein so erhalten wir $ I_1 = \qty{1100,5}{\milli\meter\tothe{4}} $.
 
 Die Unsicherheit bestimmen wir mit der Gaußschen Fehlerfortpflanzung.
-Da $I_1$ nur von $a$ abh\"angt, gilt
+Da $I_1$ nur von $a$ abhängt, gilt
 \begin{align}
   \Delta I_1 &= \left|\frac{\partial I_1}{\partial a}\right| \Delta a
               = \frac{a^3}{3}\,\Delta a \notag \\
-             &= \frac{(\qty{10,72}{\milli\meter})^3}{3} \cdot \qty{0,0624}{\milli\meter} \notag \\
-             &= \qty{25,6}{\milli\meter\tothe{4}}.
 \end{align}
+Durch einsetzen erhalten wir $\Delta I_1 = \qty{25,6}{\milli\meter\tothe{4}}$.
 Damit erhalten wir als Endergebnis $I_1 = \qty{1100(26)}{\milli\meter\tothe{4}}$. \label{sec:I1}
 
 %%Gauß für
@@ -45,17 +44,16 @@ Für den Stab 2 mit kreisförmigem Querschnitt vom Radius $r$ verwenden wir Pola
 \begin{align}
   I_2 &= \int_0^{2\pi} \int_0^r (\rho \sin\varphi)^2 \, \rho \, \mathrm{d}\rho \, \mathrm{d}\varphi
        = \int_0^r \rho^3 \, \mathrm{d}\rho \cdot \int_0^{2\pi} \sin^2\varphi \, \mathrm{d}\varphi \nonumber \\
-      &= \frac{r^4}{4} \cdot \pi = \frac{\pi \, r^4}{4}.
+      &= \frac{\pi \, r^4}{4}.
 \end{align}
 Setzen wir nun $r = 0.5 \unit{\centi\meter}$ ein so erhalten wir $I_2 = \qty{4.909e-10}{\meter\tothe{4}}$.
+Der Radius ergibt sich aus dem gemessenen Durchmesser zu $r = d/2$. Nach der Gaußschen Fehlerfortpflanzung gilt $\Delta r = \left| \partial r / \partial d \right| \Delta d = \Delta d / 2$, da die Geräteunsicherheit der Schieblehre den Durchmesser betrifft und der Radius genau halb so groß ist.
+Die Unsicherheit des Radius ist daher mit $\Delta r = \qty{0.025}{\milli\meter}$ halb so groß wie die des Durchmessers.
 Die Unsicherheit bestimmen wir mit der Gaußschen Fehlerfortpflanzung. Da $I_2$ nur von $r$ abhängt, gilt
 \begin{align}
   \Delta I_2 &= \left| \frac{\partial I_2}{\partial r} \right| \Delta r = \pi \, r^3 \, \Delta r \nonumber \\
-             &= \pi \cdot (\qty{5.00e-3}{\meter})^3 \cdot \qty{0.025e-3}{\meter} \nonumber \\
-             &= \qty{9.82e-12}{\meter\tothe{4}}.
 \end{align}
-Der Radius ergibt sich aus dem gemessenen Durchmesser zu $r = d/2$. Nach der Gaußschen Fehlerfortpflanzung gilt $\Delta r = \left| \partial r / \partial d \right| \Delta d = \Delta d / 2$, da die Geräteunsicherheit der Schieblehre den Durchmesser betrifft und der Radius genau halb so groß ist.
-Die Unsicherheit des Radius ist daher mit $\Delta r = \qty{0.025}{\milli\meter}$ halb so groß wie die des Durchmessers, die relative Unsicherheit $\Delta r / r = \Delta d / d = 0{,}5\,\%$ ist jedoch gleich.
+Durch einsetzen erhalten wir $\Delta I_2 = \qty{9.82e-12}{\meter\tothe{4}} $.
 Damit erhalten wir als Endergebnis $I_2 = \qty{490.9(9.8)}{\milli\meter\tothe{4}}$.
 
 \subsubsection{Bestimmung der Steigung k}
@@ -111,7 +109,7 @@ x /\unit{\centi\meter} & D_0 /\unit{\milli\meter} & D_M /\unit{\milli\meter} & D
 \end{table}
 
 %% python programmierung
-Mit Python wird nun die Gerade graphisch dargestellt und die Steigung k bestimmt. Den zugehörigen Code findet man im Anhang.
+Mit Python wird nun eine lineare Regression durchgeführt und diese graphisch dargestellt um die Steigung k zu bestimmen. Der dafür verwendete Python Code findet man im Anhang.
 
 \begin{figure}[H]
   \centering
@@ -127,7 +125,7 @@ Mit Python wird nun die Gerade graphisch dargestellt und die Steigung k bestimmt
   \label{fig:Fit2}
 \end{figure}
 
-Aus der linearen Ausgleichsrechnung ergibt sich für die Steigung des ersten Stabes
+Aus der linearen Ausgleichsrechnung ergibt sich für den ersten Stab 
 \begin{equation}
   k_1 = \left( \num{0.07890} \pm \num{0.00006} \right) \unit{\per\meter\squared}
 \end{equation}
@@ -138,32 +136,26 @@ und für den zweiten Stab
 
 \subsubsection{Berechnung Elastizitätsmodul}
  
-%% Nur noch formel einsetzt :))
 Mit $F = M g$, wobei $M$ die angehängte Masse ist, folgt aus \ref{eqn:E}
 \begin{equation}
   E = \frac{M \cdot g}{2 \cdot I \cdot k}.
 \end{equation}
-Das angehängte Gewicht hat eine Masse $M = 1054.2g$.
+Das angehängte Gewicht hat eine Masse von $M = 1054.2g$.
 %% Gauß für die Formel mit den Fehlern
 Mit $M = \qty{1054,2}{\gram}$ und $g = \qty{9,81}{\meter\per\second\squared}$ folgt
 \begin{align}
   E_1 &= \frac{M g}{2 I_1 k_1}
-       = \frac{\qty{1,0542}{\kilo\gram}\cdot\qty{9,81}{\meter\per\second\squared}}
-              {2\cdot\qty{1,1005e-9}{\meter\tothe{4}}\cdot\qty{0,07890}{\per\meter\squared}}
        = \qty{59,6}{\giga\pascal}, \\
   E_2 &= \frac{M g}{2 I_2 k_2}
-       = \frac{\qty{1,0542}{\kilo\gram}\cdot\qty{9,81}{\meter\per\second\squared}}
-              {2\cdot\qty{4,909e-10}{\meter\tothe{4}}\cdot\qty{0,06810}{\per\meter\squared}}
        = \qty{154,7}{\giga\pascal}.
 \end{align}
 
-Für die Gaußsche Fehlerfortpflanzung bilden wir die partiellen Ableitungen
-\begin{align}
-  \frac{\partial E}{\partial M} &= \frac{g}{2 I k}, &
-  \frac{\partial E}{\partial I} &= -\frac{M g}{2 I^2 k}, &
-  \frac{\partial E}{\partial k} &= -\frac{M g}{2 I k^2}.
-\end{align}
-Damit folgt
+Für die Gaußsche Fehlerfortpflanzung folgt
+%\begin{align}
+ % \frac{\partial E}{\partial M} &= \frac{g}{2 I k}, &
+ % \frac{\partial E}{\partial I} &= -\frac{M g}{2 I^2 k}, &
+%  \frac{\partial E}{\partial k} &= -\frac{M g}{2 I k^2}.
+%\end{align}
 \begin{equation}
   \Delta E = \sqrt{
     \left(\frac{g\,\Delta M}{2 I k}\right)^2
@@ -205,8 +197,7 @@ Umstellen nach dem Elastizitätsmodul liefert mit $F = M g$
 \subsubsection{Bestimmung der Steigung k}
 \begin{table}[H]
   \centering
-  \caption{Messwerte der Durchbiegung bei zweiseitiger Auflage für den ersten Stab.
-           Messuhr 1 befindet sich links, Messuhr 2 rechts von der Last.}
+  \caption{Messwerte der Durchbiegung bei zweiseitiger Auflage für den ersten Stab.}
   \label{tab:zweiseitig}
   \begin{tabular}{c c c c c c c c c}
     \toprule
@@ -225,19 +216,19 @@ Umstellen nach dem Elastizitätsmodul liefert mit $F = M g$
   \end{tabular}
 \end{table}
 
-Mit Python erhalten wir die zwei nachfolgenden Grafiken für die beiden Geraden. Zu beachten ist, dass der Fit durch den Ursprung gehen muss, da $D(0)=0$.
+Mit Python wird nun eine lineare Regression durchgeführt und diese graphisch dargestellt um die Steigung k zu bestimmen. Man muss beachten, dass der Fit durch den Ursprung gehen muss, da nach der Formel aus der Theorie $D(0)=0$ gilt. Der dafür verwendete Python Code findet man im Anhang.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{zweiseitig_3.pdf}
-  \caption{Durchbiegung $D$ in Abhängigkeit von .}
+  \caption{Durchbiegung $D$ links in Abhängigkeit von $ z = 3L^2x - 4x^3$.}
   \label{fig:Fit1}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{zweiseitig_4.pdf}
-  \caption{Durchbiegung $D$ in Abhängigkeit von .}
+  \caption{Durchbiegung $D$ rechts in Abhängigkeit von $z = 4x^3 - 12Lx^2 + 9L^2x - L^3$.}
   \label{fig:Fit2}
 \end{figure}
 
@@ -250,24 +241,14 @@ Das angehängte Gewicht hat eine Masse $M = 1054.2g$.
 \end{equation}
 Durch einsetzen folgt für die linke Seite mit $k_\text{links} = (0{,}00125 \pm 0{,}00003)\,\si{m^{-2}}$
 \begin{equation}
-    E_\text{links} = \frac{\SI{1,0542}{kg} \cdot \SI{9,81}{m/s^2}}
-    {48 \cdot \SI{1,1005e-9}{m^4} \cdot \SI{0,00125}{m^{-2}}}
-    = \SI{156,6}{GPa}
+    E_\text{links} = \SI{156,6}{GPa}
 \end{equation}
 und für die rechte Seite mit $k_\text{rechts} = (0{,}00212 \pm 0{,}00003)\,\si{m^{-2}}$
 \begin{equation}
-    E_\text{rechts} = \frac{\SI{1,0542}{kg} \cdot \SI{9,81}{m/s^2}}
-    {48 \cdot \SI{1,1005e-9}{m^4} \cdot \SI{0,00212}{m^{-2}}}
-    = \SI{92,3}{GPa}.
+    E_\text{rechts} = \SI{92,3}{GPa}.
 \end{equation}
 Die Unsicherheit bestimmen wir mit der Gaußschen Fehlerfortpflanzung. 
-Die partiellen Ableitungen sind
-\begin{equation}
-    \frac{\partial E}{\partial M} = \frac{g}{48 I k}, \qquad
-    \frac{\partial E}{\partial I} = -\frac{M g}{48 I^2 k}, \qquad
-    \frac{\partial E}{\partial k} = -\frac{M g}{48 I k^2},
-\end{equation}
-und damit
+Dafür bilden wir die partiellen Ableitungen und erhalten die folgende Formel
 \begin{equation}
     \Delta E = \sqrt{\left(\frac{g\,\Delta M}{48 I k}\right)^2
     + \left(\frac{M g\,\Delta I}{48 I^2 k}\right)^2
@@ -319,8 +300,6 @@ Die Geräteunsicherheit bei der verwendeten Schiebelehre beträgt $0.05 \unit{\m
 Der Mittelwert der $n = 5$ Messungen der Kantenlänge ergibt sich aus
 \begin{align}
   \bar{a} &= \frac{1}{n} \sum_{i=1}^{n} a_i \nonumber \\
-          &= \frac{1}{5} \left( 10{,}70 + 10{,}60 + 10{,}70 + 10{,}80 + 10{,}80 \right) \unit{\milli\meter} \nonumber \\
-          &= \frac{53{,}60}{5} \unit{\milli\meter} \nonumber \\
           &= \qty{10.72}{\milli\meter}.
 \end{align}
 
@@ -333,13 +312,12 @@ Die Standardabweichung der Einzelmessungen und der Standardfehler des Mittelwert
 Eingesetzt folgt
 \begin{align}
   s_a &= \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} \left( a_i - \bar{a} \right)^2} \nonumber \\
-      &= \sqrt{\frac{1}{4} \Big( 2 \cdot (10{,}70 - 10{,}72)^2 + (10{,}60 - 10{,}72)^2 + 2 \cdot (10{,}80 - 10{,}72)^2 \Big)} \unit{\milli\meter} \nonumber \\
       &= \qty{0.0837}{\milli\meter}. \\
   \sigma_{\bar{a}} &= \frac{\qty{0.0837}{\milli\meter}}{\sqrt{5}} \nonumber \\
       &= \qty{0.0374}{\milli\meter}.
 \end{align}
 
-Die Geräteunsicherheit der Schieblehre beträgt $\Delta a_\text{Gerät} = \qty{0.05}{\milli\meter}$. Sie ist hier mit dem Standardfehler vergleichbar und wird daher quadratisch addiert:
+Die Geräteunsicherheit der Schieblehre beträgt $\Delta a_\text{Gerät} = \qty{0.05}{\milli\meter}$. Nun berechnen wir mit der Geräteunsicherheit der Schiebelehre die kombinierte Unsicherheit
 \begin{align}
   \Delta a &= \sqrt{\sigma_{\bar{a}}^2 + \Delta a_\text{Gerät}^2} \nonumber \\
            &= \sqrt{\left( \qty{0.0374}{\milli\meter} \right)^2 + \left( \qty{0.05}{\milli\meter} \right)^2} \nonumber \\
@@ -347,10 +325,12 @@ Die Geräteunsicherheit der Schieblehre beträgt $\Delta a_\text{Gerät} = \qty{
 \end{align}
 
 Damit lautet das Endergebnis für die Kantenlänge
+\label{sec:aBerechnung}
 \begin{equation}
   a = \qty{10.72(0.06)}{\milli\meter}.
 \end{equation}
 %%
+Für das Volumen des zweiten Stabes gilt folgende Formel
 \begin{equation}
   V_2 = a^2 \cdot l
 \end{equation}
@@ -362,21 +342,15 @@ Setzen wir die Formel für das Volumen in \ref{eqn:Dichte} ein so erhalten wir
 Mit dieser Formel \ref{eqn:Dichte1} erhalten wir für die Dichte des ersten Stabes den Wert $ \rho_1 \approx \qty{2.43}{\gram\per\centi\metre\cubed}$.\\
 %%
 Nun verwenden wir die Gaußsche Fehlerfortpflanzung, um die Unsicherheit unserer berechneten Dichte zu bestimmen.
-\begin{equation}
-  \Delta\rho = \sqrt{
-    \left( \frac{\partial \rho}{\partial m} \, \Delta m \right)^2 +
-    \left( \frac{\partial \rho}{\partial a} \, \Delta a \right)^2 +
-    \left( \frac{\partial \rho}{\partial l} \, \Delta l \right)^2
-  }
-  \label{eqn:Gauss1}
-\end{equation}
-Nun bilden wir die partiellen Ableitungen.
-\begin{align}
-  \frac{\partial \rho}{\partial m} &= \frac{1}{a^2 l} \\[1ex]
-  \frac{\partial \rho}{\partial a} &= -\frac{2m}{a^3 l} \\[1ex]
-  \frac{\partial \rho}{\partial l} &= -\frac{m}{a^2 l^2}
-\end{align}
-Diese werden in \eqref{eqn:Gauss1} eingesetzt und wir erhalten die fertige Formel.
+%\begin{equation}
+%  \Delta\rho = \sqrt{
+%    \left( \frac{\partial \rho}{\partial m} \, \Delta m \right)^2 +
+ %   \left( \frac{\partial \rho}{\partial a} \, \Delta a \right)^2 +
+%    \left( \frac{\partial \rho}{\partial l} \, \Delta l \right)^2
+ % }
+ % \label{eqn:Gauss1}
+%\end{equation}
+Durch berechnen der partiellen Ableitungen erhalten wir die folgende Formel
 \begin{equation}
   \Delta\rho = \sqrt{
     \left( \frac{\Delta m}{a^2 l} \right)^2 +
@@ -388,7 +362,6 @@ Diese werden in \eqref{eqn:Gauss1} eingesetzt und wir erhalten die fertige Forme
 Durch einsetzen unserer Werte erhalten wir $\Delta\rho_1 = \qty{0.0286}{\gram\per\centi\metre\cubed}$ und für die Dichte letztendlich den Wert $\rho_1 = \qty{2.43(0.03)}{\gram\per\centi\metre\cubed}$.\\
 Unsere berechnete Dichte lässt darauf schließen, dass der Stab wahrscheinlich aus einer Aluminium-Legierung ist, da Aluminium die Dichte $ \rho = \qty{2.7}{\gram\per\centi\metre\cubed}$ besitzt.
 %%
-
 \subsubsection{Dichte des zweiten Stabes}
 Für den kupferfarbene runden Stab haben wir die Länge $l = \qty{59(0.1)}{\centi\meter}$ , das Gewicht $m = \qty{412(0.1)}{\gram}$ und den Durchmesser als $d = \qty{10(0.05)}{\milli\meter}$ bestimmt. Aufgrund von möglichen Ungenauigkeiten bei der Messung haben wir den Durchmesser fünfmal gemessen.
 Es kam jedoch jedes Mal genau 1cm bei dem Messen mit der Schieblehre heraus. Da dieselben Geräte verwendet wurden sind die Geräteunsicherheiten gleich wie bei dem ersten Stab \ref{sec:Stab1}.
@@ -403,22 +376,8 @@ Setzten wir die Formel für das Volumen in \ref{eqn:Dichte} ein so erhalten wir
 \end{equation}
 Mit dieser Formel \ref{eqn:Dichte2} erhalten wir für die Dichte des zweiten Stabes den Wert $ \rho_2 = \frac{1648}{59\pi}\,\si{\gram\per\centi\metre\cubed} \approx \qty{8.9}{\gram\per\centi\metre\cubed} $.
 
-Nun verwenden wir die Gaußsche Fehlerfortpflanzung um die Unsicherheit unserer berechneten Dichte zu bestimmen.
-\begin{equation}
-  \Delta\rho = \sqrt{
-    \left( \frac{\partial \rho}{\partial m} \, \Delta m \right)^2 +
-    \left( \frac{\partial \rho}{\partial r} \, \Delta r \right)^2 +
-    \left( \frac{\partial \rho}{\partial l} \, \Delta l \right)^2
-  }
-  \label{eqn:Gauß2}
-\end{equation}
-Nun bilden wir die partiellen Ableitungen.
-\begin{align}
-  \frac{\partial \rho}{\partial m} &= \frac{1}{\pi r^2 l} \\[1ex]
-  \frac{\partial \rho}{\partial r} &= -\frac{2m}{\pi r^3 l} \\[1ex]
-  \frac{\partial \rho}{\partial l} &= -\frac{m}{\pi r^2 l^2}
-\end{align}
-Zum Schluss werden diese nur noch in \ref{eqn:Gauß2} eingesetzt und wir erhalten die fertige Formel.
+Nun verwenden wir erneut die Gaußsche Fehlerfortpflanzung um die Unsicherheit unserer berechneten Dichte zu bestimmen.
+
 \begin{equation}
   \Delta\rho = \sqrt{
     \left( \frac{\Delta m}{\pi r^2 l} \right)^2 +
@@ -466,17 +425,13 @@ Der Mittelwert der $n = 10$ Messungen ergibt sich aus
 
 Für Stab 1 folgt
 \begin{align}
-  \bar{t}_1 &= \frac{1}{10} \Big( 2399 + 2406 + 1996 + 2397 + 2395 \nonumber \\
-            &\qquad\quad + 2397 + 2396 + 2395 + 2396 + 2395 \Big) \unit{\micro\second} \nonumber \\
-            &= \frac{23572}{10} \unit{\micro\second} \nonumber \\
+  \bar{t}_1  &= \frac{23572}{10} \unit{\micro\second} \nonumber \\
             &= \qty{2357.2}{\micro\second}
 \end{align}
 
 und für Stab 2
 \begin{align}
-  \bar{t}_2 &= \frac{1}{10} \Big( 2998 + 2695 + 2994 + 2993 + 2694 \nonumber \\
-            &\qquad\quad + 2993 + 2993 + 2992 + 2692 + 2992 \Big) \unit{\micro\second} \nonumber \\
-            &= \frac{29036}{10} \unit{\micro\second} \nonumber \\
+  \bar{t}_2  &= \frac{29036}{10} \unit{\micro\second} \nonumber \\
             &= \qty{2903.6}{\micro\second}.
 \end{align}
 %Abweichung mittelwert
@@ -489,10 +444,6 @@ Die Standardabweichung der Einzelmessungen und der Standardfehler des Mittelwert
 Für Stab 1 folgt mit $\bar{t}_1 = \qty{2357.2}{\micro\second}$
 \begin{align}
   \sum_{i=1}^{10} \left( t_{1,i} - \bar{t}_1 \right)^2
-    &= (2399 - 2357{,}2)^2 + (2406 - 2357{,}2)^2 + (1996 - 2357{,}2)^2 \nonumber \\
-    &\quad + (2397 - 2357{,}2)^2 + (2395 - 2357{,}2)^2 + (2397 - 2357{,}2)^2 \nonumber \\
-    &\quad + (2396 - 2357{,}2)^2 + (2395 - 2357{,}2)^2 + (2396 - 2357{,}2)^2 \nonumber \\
-    &\quad + (2395 - 2357{,}2)^2 \nonumber \\
     &= \qty{145059.6}{\micro\second\squared}, \\[1ex]
   s_1 &= \sqrt{\frac{\qty{145059.6}{\micro\second\squared}}{9}} \nonumber \\
       &= \qty{126.96}{\micro\second}, \\[1ex]
@@ -503,10 +454,6 @@ Für Stab 1 folgt mit $\bar{t}_1 = \qty{2357.2}{\micro\second}$
 Für Stab 2 folgt mit $\bar{t}_2 = \qty{2903.6}{\micro\second}$
 \begin{align}
   \sum_{i=1}^{10} \left( t_{2,i} - \bar{t}_2 \right)^2
-    &= (2998 - 2903{,}6)^2 + (2695 - 2903{,}6)^2 + (2994 - 2903{,}6)^2 \nonumber \\
-    &\quad + (2993 - 2903{,}6)^2 + (2694 - 2903{,}6)^2 + (2993 - 2903{,}6)^2 \nonumber \\
-    &\quad + (2993 - 2903{,}6)^2 + (2992 - 2903{,}6)^2 + (2692 - 2903{,}6)^2 \nonumber \\
-    &\quad + (2992 - 2903{,}6)^2 \nonumber \\
     &= \qty{188910.4}{\micro\second\squared}, \\[1ex]
   s_2 &= \sqrt{\frac{\qty{188910.4}{\micro\second\squared}}{9}} \nonumber \\
       &= \qty{144.88}{\micro\second}, \\[1ex]
@@ -555,35 +502,16 @@ Dies ist unsere fertige Formel zum berechnen des Elastizitätsmodul mit Hilfe de
 
 Für Stab 1 mit $\rho_1 = \left( \num{2429} \pm \num{30} \right) \unit{\kilo\gram\per\meter\cubed}$, $l_1 = \left( \num{0.600} \pm \num{0.001} \right) \unit{\meter}$ und $\bar t_1 = \left( \num{2357e-6} \pm \num{40e-6} \right) \unit{\second}$ folgt
 \begin{align}
-  E_1 &= \qty{2429}{\kilo\gram\per\meter\cubed} \cdot \left( \frac{20 \cdot \qty{0.600}{\meter}}{\qty{2357.2e-6}{\second}} \right)^2 \nonumber \\
-      &= \qty{6.296e10}{\pascal} \nonumber \\
-      &= \qty{62.96}{\giga\pascal}.
+  E_1  &= \qty{62.96}{\giga\pascal}.
 \end{align}
 
 Für Stab 2 mit $\rho_2 = \left( \num{8891} \pm \num{90} \right) \unit{\kilo\gram\per\meter\cubed}$, $l_2 = \left( \num{0.590} \pm \num{0.001} \right) \unit{\meter}$ und $\bar t_2 = \left( \num{2904e-6} \pm \num{46e-6} \right) \unit{\second}$ folgt
 \begin{align}
-  E_2 &= \qty{8891}{\kilo\gram\per\meter\cubed} \cdot \left( \frac{20 \cdot \qty{0.590}{\meter}}{\qty{2903.6e-6}{\second}} \right)^2 \nonumber \\
-      &= \qty{1.468e11}{\pascal} \nonumber \\
-      &= \qty{146.8}{\giga\pascal}.
+  E_2  &= \qty{146.8}{\giga\pascal}.
 \end{align}
 
 %Unsicherheiten
 Nun verwenden wir die Gaußsche Fehlerfortpflanzung, um die Unsicherheit des Elastizitätsmoduls zu bestimmen.
-\begin{equation}
-  \Delta E = \sqrt{
-    \left( \frac{\partial E}{\partial \rho} \, \Delta \rho \right)^2 +
-    \left( \frac{\partial E}{\partial l} \, \Delta l \right)^2 +
-    \left( \frac{\partial E}{\partial t} \, \Delta t \right)^2
-  }
-  \label{eqn:GaussE}
-\end{equation}
-Mit $E = 400 \, \rho \, l^2 \, t^{-2}$ bilden wir die partiellen Ableitungen.
-\begin{align}
-  \frac{\partial E}{\partial \rho} &= \frac{400\,l^2}{t^2} = \left( \frac{20\,l}{t} \right)^2 \\[1ex]
-  \frac{\partial E}{\partial l} &= \frac{800\,\rho\,l}{t^2} \\[1ex]
-  \frac{\partial E}{\partial t} &= -\frac{800\,\rho\,l^2}{t^3}
-\end{align}
-Diese werden in \eqref{eqn:GaussE} eingesetzt, und wir erhalten die fertige Formel.
 \begin{equation}
   \Delta E = \sqrt{
     \left( \frac{400\,l^2}{t^2} \, \Delta\rho \right)^2 +
