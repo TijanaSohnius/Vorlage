@@ -16,13 +16,19 @@ Der Proportionalitätsfaktor darin ist das Elastizitätsmodul E, eine zentrale K
 Um E im Versuch gut messen zu können, nutzt man oft die Biegung. Schon mit vergleichsweise kleinen Kräften entsteht an einem Probestab eine Verformung, die sich gut ablesen lässt. Hierfür wird ein Versuchsaufbau benötigt, der eine definierte Kraft F kontrolliert an der Probe angreifen lässt. Allerdings kann eine elastische Nachwirkung das Ergebnis über das Messverfahren verfälschen. Man muss also das Verfahren passend zum Material wählen\cite{v103_anleitung}.\\
 
 \subsection{Durchbiegung bei einseitig eingespanntem homogenem Stab}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{BiegungA1.png}
+    \caption{Durchbiegung eines elastischen Stabes bei einseitiger Einspannung (Die Lage der „neutralen Faser“ ist eine gestrichelte Linie dargestellt.)\cite{v103_anleitung}}
+    \label{fig:BiegungA1}
+\end{figure}
 Bei der Biegung eines Stabes entstehen unterschiedliche Längenänderungen über seinen Querschnitt Q. Bei einseitiger Einspannung werden die oberen Schichten gedehnt und erfahren Zugspannungen, während die unteren Schichten gestaucht werden und unter Druckspannungen stehen. Zwischen diesen Bereichen befindet sich die neutrale Faser. Sie verändert bei der Biegung ihre Länge nicht und ist spannungsfrei.\\
 Eine äußere Kraft F erzeugt ein Drehmoment ($M_F$), das den Stab verformt und nach unten biegen möchte, während die innere Spannung des Materials mit einem rückstellenden Moment ($M \sigma $) dagegenhält.\\
-Die Durchbiegung wird durch $D(x)$ beschrieben. Sie gibt die Verschiebung eines Punktes in Abhängigkeit von seinem Abstand x zur Einspannstelle an.\\
+Die Durchbiegung wird durch $D(x)$ beschrieben. Sie gibt die Verschiebung eines Punktes in Abhängigkeit von seinem Abstand x zur Einspannstelle an \cite{v103_anleitung}.\\
 \subsubsection{Herleitung der Durchbiegungsformel}
 Wir betrachten ein horizontal einseitig eingespannter Stab der Länge L mit Querschnitt Q, an dessen freiem Ende, bei x = L, eine Kraft F angreift.\\
 \paragraph{Aufstellen der Drehmomentgleichung}\mbox{}\\
-An einem Querschnitt Q im Abstand x von der Einspannung stehen zwei Drehmomente im Gleichgewicht, der äußere und das innere Drehmoment.
+An einem Querschnitt Q im Abstand x von der Einspannung stehen zwei Drehmomente im Gleichgewicht, der äußere und das innere Drehmoment.\\
 Für den äußere Drehmoment gilt Kraft × Hebelarm, hier:\\
 \begin{equation}
   M_F= F(L- x)
@@ -69,9 +75,11 @@ Oben haben wir die Formel für das Gleichgewicht \ref{eq: Gleichgewicht} hergele
 \begin{equation}
    \frac{1}{R} = \frac{F (L - x)}{EI}
 \end{equation}
-Für kleine Durchbiegungen (d.h. geringe Neigung, $ \left(\frac{dD}{dx} \right)^{2} << 1$) lässt sich die Krümmung $\frac{1}{R}$ durch die zweite Ableitung der Biegelinie $D(x)$ annähern mit $ \frac{1}{R} \approx \frac{d^2 D}{dx^2}$. Damit lautet die Differentialgleichung:\\ 
+Für kleine Durchbiegungen (d.h. geringe Neigung, $ \left(\frac{dD}{dx} \right)^{2} << 1$) lässt sich die Krümmung $\frac{1}{R}$ durch die zweite Ableitung der Biegelinie $D(x)$ annähern mit $ \frac{1}{R} \approx \frac{d^2 D}{dx^2}$. \\ 
+Damit lautet die Differentialgleichung:\\ 
 \begin{equation}
    \frac{d^2 D}{dx^2} = \frac{F}{EI} (L - x)
+   \label{eq: Klein}
 \end{equation}
 Durch zweimalige Integration und Verwendung folgenden Bedingungen:\\ 
 \begin{enumerate}
@@ -84,78 +92,93 @@ ergibt sich als Endergebnis:\\
 \end{equation}
 \subsubsection{Durchbiegung bei beidseitig eingespanntem homogenem Stab}
 Eine Durchbiegung des Stabes lässt sich auch erzielen, indem man ihn an beiden Enden lagert und in der Stabmitte mit einer Kraft F belastet.\\ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Biegung2.png}
+    \caption{Durchbiegung eines homogenen Stabes bei zweiseitiger Auflage\cite{v103_anleitung}}
+    \label{fig:Biegung2}
+\end{figure}
 \paragraph{Herleitung der Formel}\mbox{}\\
-Wir betrachten einen beidseitig aufgelegten homogenen Stab der Länge L, an dessen Enden $x=0$ und $x=L$ jeweils die Auflagerkräfte $F_{A1}= F_{A2}$ nach oben wirken, während in der Mitte mit $x =L/2$ die Kraft F nach unten drückt. Daraus ergibt sich für die Kräfte:\\
+Wir betrachten einen beidseitig aufgelegten homogenen Stab der Länge L, an dessen Enden $x=0$ und $x=L$ jeweils die Auflagerkräfte $F_{A1}= F_{A2}$ nach oben wirken, während in der Mitte mit $x = \frac{L}{2}$ die Kraft F nach unten drückt. Daraus ergibt sich für die Kräfte:\\
 \begin{equation}
-   F_{A1}= F_{A2} = F/2
+   F_{A1}= F_{A2} = \frac{L}{2}
 \end{equation}
 \paragraph{Biegemoment}\mbox{}\\
-Wir betrachten zunächst die linke Stabhälfte mit  $0 \leq x \leq L/2$.\\ 
-Die Auflagerkraft $F/2$  erzeugt an der Stelle x ein Biegemoment von:\\ 
+Wir betrachten zunächst die linke Stabhälfte mit  $0 \leq x \leq \frac{L}{2}$.\\ 
+Die Auflagerkraft $\frac{F}{2}$  erzeugt an der Stelle x ein Biegemoment von:\\ 
 \begin{equation}
    M_F(x) = - \frac{F}{2} x
 \end{equation}
-Für die rechte Stabhälfte gilt mit $ L/2 \leq x \leq L$:\\ 
+Für die rechte Stabhälfte gilt mit $ \frac{L}{2} \leq x \leq L$:\\ 
 \begin{equation}
    M_F(x) = - \frac{F}{2} (L-x)
 \end{equation}
-Aus der Herleitung der Gleichung, für den einseitig eingespannten Stab, wissen wir bereit das gilt $ \frac{d^2 D}{dx^2} =\frac{MF}{EI}$
-Nun setzten wir jeweils beide Biegemomente in die Formeln ein und erhalten:\\ 
-Für $0 \leq x \leq L/2$:\\ 
+Aus der Herleitung der Gleichung, für den einseitig eingespannten Stab  \ref{eq: Klein}, wissen wir bereit das gilt $ \frac{d^2 D}{dx^2} =\frac{M_F}{EI}$\\ 
+Nun setzten wir jeweils beide Biegemomente ($M_F$) in die Formeln ein und erhalten:\\ 
+Für $0 \leq x \leq \frac{L}{2}$:\\ 
 \begin{equation}
   \frac{d^2 D}{dx^2} = - \frac{F}{2EI} x
+  \label{eq: Biegung21}
 \end{equation}
-Und für $ L/2 \leq x \leq L$:\\ 
+Und für $ \frac{L}{2} \leq x \leq L$:\\ 
 \begin{equation}
   \frac{d^2 D}{dx^2} = - \frac{F}{2EI} (L - x) = - \frac{F}{2EI} L + \frac{F}{2EI} x
+  \label{eq: Biegung22}
 \end{equation}
 \paragraph{Differentialgleichung Lösen}\mbox{}\\
 Auch diese beiden Gleichungen integrieren wir jeweils zweimal und nutzen dafür die folgenden Bedingungen:\\ 
 \begin{enumerate}
-    \item An der Einspannung (x=0) ist der Stab horizontal eingespannt, die Steigung ist dort null: $\frac{dD}{dx} = 0 $
-    \item An der Einspannstelle (x=0) gibt es keine Durchbiegung: $D(0)=0$
+    \item An der Einspannung (x = 0) ist der Stab horizontal eingespannt, die Steigung ist dort null: $\frac{dD}{dx} = 0 $
+    \item An der Einspannstelle (x = 0) gibt es keine Durchbiegung: $D(0)=0$
 \end{enumerate}
-Für Gl. 1 ergibt sich mit Hilfe der Bedingungen:\\
+Für Gl. 1 (\ref{eq: Biegung21}) ergibt sich mit Hilfe der Bedingungen:\\
 \begin{equation}
-  C_1 = \frac{FL^2}{16EI} ; C_2 = 0 
+  C_1 = \frac{FL^2}{16EI} ;  C_2 = 0 
 \end{equation}
 Womit wir auf die Endgleichung \\
 \begin{equation}
-  D(x) = \frac{F}{48EI} (3 L^2 x - 4x^3) (\text{für} 0 \leq x \leq \frac{L}{2}) 
+  D(x) = \frac{F}{48EI} (3 L^2 x - 4x^3) (\text{für }  0 \leq x \leq \frac{L}{2}) 
 \end{equation}
 kommen.\\
-Für Gl. 2 ergibt sich mit Hilfe der Bedingungen:
+Für Gl. 2 (\ref{eq: Biegung22}) ergibt sich mit Hilfe der Bedingungen:
 \begin{equation}
-  C_{1'} = \frac{3FL^2}{16EI} ; C_{2'} = -  \frac{FL^3}{48EI}
+  C_{1'} = \frac{3FL^2}{16EI} ;  C_{2'} =  \frac{FL^3}{48EI}
 \end{equation}
 Womit wir auf die Endgleichung \\
 \begin{equation}
-  D(x) = \frac{F}{48EI} (- 4x^3 + 12Lx^2 - 9L^2 x + L^3) (\text{für} \frac{L}{2} \leq x \leq L) 
+  D(x) = \frac{F}{48EI} (4x^3 - 12Lx^2 + 9L^2 x - L^3) (\text{für } \frac{L}{2} \leq x \leq L) 
 \end{equation}
 kommen.\\
 \subsection{Schallgeschwindigkeit}
 \subsubsection{Zusammenhang zwischen Elastizitätsmodul E und Schallgeschwindigkeit c}
 Es gibt einen Zusammenhang zwischen den Elastizitätsmodul E und der Schallgeschwindigkeit c. Durch Messung der Schallgeschwindigkeit c, hier durch Stäbe, lässt sich der Elastizitätsmodul E bestimmen.\\
-Schall breitet sich generell in Festkörpern als Longitudinal-, Transversal-, Dehn- oder Biegewellen aus. Durch abwechselnde Dehnung und Spannung, in Längsrichtung, entstehen in einem dünnen und langen Stab elastische Longitudinalwellen. Solange der Stab deutlich länger als dick ist, hängt die Ausbreitungsgeschwindigkeit ausschließlich von Elastizitätsmodul und Dichte ab. Im Folgenden leiten wir die Gleichung her, womit dies gezeigt wird.\\
+Schall breitet sich generell in Festkörpern als Longitudinal-, Transversal-, Dehn- oder Biegewellen aus. Durch abwechselnde Dehnung und Spannung, in Längsrichtung, entstehen in einem dünnen und langen Stab elastische Longitudinalwellen. Solange der Stab deutlich länger als dick ist, hängt die Ausbreitungsgeschwindigkeit ausschließlich von Elastizitätsmodul und Dichte ab. Im Folgenden leiten wir die Gleichung her, womit dies gezeigt wird \cite{Schallwellen}.\\
 Das Phänomen der elastischen Nachwirkung, spielt in diesem Versuch keine Rolle. \\
 \subsubsection{Herleitung der Gleichung}
 \paragraph{Überlegung}\mbox{}\\
 Ausgangssituation: In einem langen, dünnen Stab mit dem Querschnitt Q und der Dichte $\rho$ breitet sich nach einem Stoß eine longitudinale Deformation aus.\\
 Durch die longitudinale Deformation entsteht eine Spannung $\sigma(x)$, diese mit dem Ort x entlang des Stabes variiert.\\
 Ein “kleines“ Volumenelement an der Stelle x hat das Volumen:  $dV = Q dx$ \\
-Durch die Zug- oder Druckspannung $\sigma(x)$ verschiebt sich ein Querschnitt mit der Ruhelage x um den Betrag $\xi (x,t)$ entlang der Stabachse. Da sich die Verschiebung entlang des Stabes verändert, wird das Element zusätzlich um $d\xi$ gedehnt oder gestaucht, siehe Abbildung.\\
+Durch die Zug- oder Druckspannung $\sigma(x)$ verschiebt sich ein Querschnitt mit der Ruhelage x um den Betrag $\xi (x,t)$ entlang der Stabachse. Da sich die Verschiebung entlang des Stabes verändert, wird das Element zusätzlich um $d\xi$ gedehnt oder gestaucht, siehe Abbildung \ref{fig:Schallwellen}.\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Schallwellen.png}
+    \caption{Skizze zur Ableitung eines Zusammenhanges zwischen Elastizitätsmodul und Schallgeschwindigkeit\cite{v103_anleitung}}
+    \label{fig:Schallwellen}
+\end{figure}
 \paragraph{Hookesche Gesetz}\mbox{}\\
 Durch Anwendung des Hookeschen Gesetz ergibt sich:\\
 \begin{equation}
   \sigma = E  \frac{\partial \xi}{\partial x}
+  \label{eq: HG}
 \end{equation}
 wobei $\frac{\partial \xi}{\partial x}$ die Dehnung abbildet.\\
 An den beiden Stirnflächen des Volumenelements wirken unterschiedliche Spannungen. Die Stirnflächen befinden sich an den Orten $x$ und $x+ dx$.\\
 $\sigma$ ändert sich also mit x, somit gilt für $d\sigma$:\\
 \begin{equation}
-  d\sigma = \frac{\partial \xi}{\partial x} dx
+  d\sigma = \frac{\partial \sigma}{\partial x} dx
 \end{equation}
-Nun setzen wir in diese Gleichung $\sigma$ ein, mit der Formel für das Hookesche Gesetz. Daraus folgt: \\
+Nun setzen wir in diese Gleichung $\sigma$ ein, mit der Formel für das Hookesche Gesetz (\ref{eq: HG}). Daraus folgt: \\
 \begin{equation}
   d\sigma = E \frac{\partial^2 \xi}{\partial x^2} dx
 \end{equation}
@@ -167,11 +190,11 @@ Daraus ergibt sich: \\
 \end{equation}
 Nun setzten wir $d\sigma$ in die Formel ein:\\
 \begin{equation}
-  dF = QE \frac{\partial^2 \xi}{\partial x^2} dx
+  dF = QE \frac{\partial^2 \xi}{\partial x^2}  dx
 \end{equation}
 Gemäß dem zweiten Newtonschen Gesetz $(dF = dm \cdot b)$ erhält man die Beschleunigung b des Volumenelements, indem man durch dessen Masse $dm = \rho Q dx$ teilt:\\
 \begin{equation}
-  b = \frac{dF}{dm} == \frac{E}{\rho} \frac{\partial^2 \xi}{\partial x^2} 
+  b = \frac{dF}{dm} = \frac{E}{\rho} \frac{\partial^2 \xi}{\partial x^2} 
 \end{equation}
 \paragraph{Bestimmung Schallgeschwindigkeit}\mbox{}\\
 Da die Beschleunigung b der zweiten partiellen Ableitung der Verschiebung $\xi (x,t)$ nach der Zeit t entspricht, folgt daraus die eindimensionale Wellengleichung:\\
@@ -203,7 +226,13 @@ Die linke Seite entspricht der zurückgelegten Strecke pro Zeit und somit ist c 
 \paragraph{Fazit}\mbox{}\\
 Aus der Mechanik eines schwingenden Stabes ergibt sich, dass die Schallgeschwindigkeit c allein durch das Elastizitätsmodul und seine Dichte $\rho$ bestimmt werden kann.\\
 \subsubsection{Messapparatur zur Messung der Schallgeschwindigkeit}
-Damit der Zusammenhang $E = \rho c^2$ genutzt werden kann, muss die Laufzeit eines Schallimpulses im Stab genau gemessen werden. Dieses kann man mit folgender Abbildung machen:\\
+Damit der Zusammenhang $E = \rho c^2$ genutzt werden kann, muss die Laufzeit eines Schallimpulses im Stab genau gemessen werden. Dieses kann man mit folgender Abbildung \ref{fig:SchallwellenA} machen:\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{SchallwellenA.png}
+    \caption{Schematische Darstellung einer Apparatur zur Messung der Laufzeit eines Schallimpulses in einem stabförmigen Probekörper\cite{v103_anleitung}}
+    \label{fig:SchallwellenA}
+\end{figure}
 Eine Stahlkugel schlägt links gegen den stabförmigen Probekörper und löst einen Schallimpuls aus. Im Stab breitet sich eine longitudinale Schallwelle aus. Trifft der Schallimpuls rechts ein, registriert ein Tonabnehmer die Deformation und sendet ein Signal an eine elektrische Torschufe. Die Torstufe steuert, wann die Zeitmessung beginnt und endet. Trifft das Signal zum ersten Mal ein, öffnet die Torstufe den Signalweg für die Takte eines quarzgesteuerten Zeitbasisgenerators mit einer Periodendauer von 1\unit{\micro\second} zum Impulszähler.\\
-Da cStab≫cLuft ist, wird der Impuls an den Stirnflächen überwiegend reflektiert und geht kaum in die Luft über. Beim erneuten Eintreffen rechts schließt der Impuls die Torstufe. Der Zähler zeigt die doppelte Laufzeit an. Durch Umschalten lassen sich auch Mehrfachreflexionen (z. B. zehnfach reflektierte Impulse) zur genaueren Laufzeitmessung erfassen.\\
+Da $c_\text{Stab } ≫ c_\text{Luft}$ ist, wird der Impuls an den Stirnflächen überwiegend reflektiert und geht kaum in die Luft über. Beim erneuten Eintreffen rechts schließt der Impuls die Torstufe. Der Zähler zeigt die doppelte Laufzeit an. Durch Umschalten lassen sich auch Mehrfachreflexionen (z. B. zehnfach reflektierte Impulse) zur genaueren Laufzeitmessung erfassen.\\
 
